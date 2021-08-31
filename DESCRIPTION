@@ -1,0 +1,16 @@
+Package: PCAtest
+Title: What the Package Does (One Line, Title Case)
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Arley",
+           family = "Camargo",
+           role = c("aut", "cre"),
+           email = "arley.camargo@gmail.com",
+           comment = c(ORCID = "0000-0001-9082-6348"))
+Description: What the package does (one paragraph).
+License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
+    license
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
