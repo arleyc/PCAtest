@@ -1,5 +1,5 @@
 Package: PCAtest
-Title: What the Package Does (One Line, Title Case)
+Title: Statistical significance of PCA
 Version: 0.0.0.9000
 Authors@R: 
     person(given = "Arley",
@@ -7,9 +7,8 @@ Authors@R:
            role = c("aut", "cre"),
            email = "arley.camargo@gmail.com",
            comment = c(ORCID = "0000-0001-9082-6348"))
-Description: What the package does (one paragraph).
-License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
-    license
+Description: PCAtest is an R function that implements permutation-based statistical tests to evaluate the overall significance of a PCA, the significance of each PC axis, and of contributions of each observed variable to the significant axes.
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
