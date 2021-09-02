@@ -40,10 +40,17 @@ This is a basic example which shows you how to solve a common problem:
 
 ```{r example}
 library(PCAtest)
+# PCA analysis of two uncorrelated variables
 v1<-runif(100,0,1)
 v2<-runif(100,0,1)
 x<-cbind(v1,v2)
-result<-PCAtest(x, 1000, 1000, 0.05, corr=FALSE, plot=TRUE)
+result<-PCAtest(x, 100, 100, 0.05, corr=FALSE, plot=TRUE)
+
+#PCA analysis of two fully-correlated variables
+v1<-seq(0,1,0.01)
+v2<-seq(0,1,0.01)
+x<-cbind(v1,v2)
+PCAout<-PCAtest(x, 100, 100, 0.05, corr=FALSE, plot=TRUE)
 ```
 
 What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:
