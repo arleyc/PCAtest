@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of PCAtest is to ...
+The goal of PCAtest is to evaluate the overall significance of a PCA, of each PC axis, and of the contributions of each observed variable to the significant axes based on permutation-based statistical tests.
 
 ## Installation
 
@@ -40,7 +40,10 @@ This is a basic example which shows you how to solve a common problem:
 
 ```{r example}
 library(PCAtest)
-## basic example code
+v1<-runif(100,0,1)
+v2<-runif(100,0,1)
+x<-cbind(v1,v2)
+result<-PCAtest(x, 1000, 1000, 0.05, corr=FALSE, plot=TRUE)
 ```
 
 What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:
