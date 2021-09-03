@@ -24,3 +24,5 @@ Imports:
     grDevices,
     utils,
     stats
+Depends: 
+    R (>= 2.10)
