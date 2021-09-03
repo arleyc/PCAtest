@@ -7,7 +7,10 @@ Authors@R:
            role = c("aut", "cre"),
            email = "arley.camargo@gmail.com",
            comment = c(ORCID = "0000-0001-9082-6348"))
-Description: PCAtest is an R function that implements permutation-based statistical tests to evaluate the overall significance of a PCA, the significance of each PC axis, and of contributions of each observed variable to the significant axes.
+Description: PCAtest is an R function that implements permutation-based
+        statistical tests to evaluate the overall significance of a PCA,
+        the significance of each PC axis, and of the contributions of each
+        observed variable to the significant axes.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true

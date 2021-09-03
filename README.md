@@ -44,8 +44,8 @@ result<-PCAtest(x, 100, 100, 0.05, corr=FALSE, plot=TRUE)
 #> 100 bootstrap replicates, 100 random permutations
 #> ========================================================
 #> 
-#> Empirical Psi = 0.0087, Max null Psi = 0.1215, Min null Psi = 0.0000, p-value = 0.48
-#> Empirical Phi = 0.0661, Max null Phi = 0.2465, Min null Phi = 0.0014, p-value = 0.48
+#> Empirical Psi = 0.0161, Max null Psi = 0.2477, Min null Psi = 0.0000, p-value = 0.4
+#> Empirical Phi = 0.0897, Max null Phi = 0.3519, Min null Phi = 9e-04, p-value = 0.4
 ```
 
 <img src="man/figures/README-example1-1.png" width="100%" />
@@ -62,11 +62,11 @@ PCAout<-PCAtest(x, 100, 100, 0.05, corr=FALSE, plot=TRUE)
 #> 100 bootstrap replicates, 100 random permutations
 #> ========================================================
 #> 
-#> Empirical Psi = 2.0000, Max null Psi = 0.1946, Min null Psi = 0.0000, p-value = 0
-#> Empirical Phi = 1.0000, Max null Phi = 0.3119, Min null Phi = 0.0020, p-value = 0
+#> Empirical Psi = 2.0000, Max null Psi = 0.1354, Min null Psi = 0.0000, p-value = 0
+#> Empirical Phi = 1.0000, Max null Phi = 0.2602, Min null Phi = 8e-04, p-value = 0
 #> 
-#> Empirical eigenvalue #1 = 2, Max null eigenvalue = 1.31192, p-value = 0
-#> Empirical eigenvalue #2 = 0, Max null eigenvalue = 0.99798, p-value = 1
+#> Empirical eigenvalue #1 = 2, Max null eigenvalue = 1.26021, p-value = 0
+#> Empirical eigenvalue #2 = 0, Max null eigenvalue = 0.99924, p-value = 1
 #> 
 #> PC 1 is significant and accounts for 100% (95%-CI:100-100) of the total variation
 #> 
@@ -74,30 +74,3 @@ PCAout<-PCAtest(x, 100, 100, 0.05, corr=FALSE, plot=TRUE)
 ```
 
 <img src="man/figures/README-example2-1.png" width="100%" />
-
-What is special about using `README.Rmd` instead of just `README.md`?
-You can include R chunks like so:
-
-``` r
-summary(cars)
-#>      speed           dist       
-#>  Min.   : 4.0   Min.   :  2.00  
-#>  1st Qu.:12.0   1st Qu.: 26.00  
-#>  Median :15.0   Median : 36.00  
-#>  Mean   :15.4   Mean   : 42.98  
-#>  3rd Qu.:19.0   3rd Qu.: 56.00  
-#>  Max.   :25.0   Max.   :120.00
-```
-
-You’ll still need to render `README.Rmd` regularly, to keep `README.md`
-up-to-date. `devtools::build_readme()` is handy for this. You could also
-use GitHub Actions to re-render `README.Rmd` every time you push. An
-example workflow can be found here:
-<https://github.com/r-lib/actions/tree/master/examples>.
-
-You can also embed plots, for example:
-
-<img src="man/figures/README-pressure-1.png" width="100%" />
-
-In that case, don’t forget to commit and push the resulting figure
-files, so they display on GitHub and CRAN.
