@@ -353,7 +353,8 @@ graphics::arrows (x0=Phiobs, y0=max(h$density)/10, y1=0, col="red", lwd=2, lengt
 
 if (Psiprob < alpha & Phiprob < alpha) { # test PC axes if both Psi and Phi are significant
 
-	plot(pervarobs, ylab="Percentage of total variation", xlab="PC", bty="n", ylim=c(0, max(confint)), type="b", pch=19, lty="dashed", col="red")
+	plot(pervarobs, ylab="Percentage of total variation", xlab="PC", bty="n", ylim=c(0, max(confint)), type="b", pch=19, lty="dashed", col="red", xaxt = "n")
+  graphics::axis(1, at = 1:length(eigenobs))
 	graphics::lines (apply(pervarperm,MARGIN=2,FUN=mean), type="b", pch=19, lty="dashed", col="gray45")
 	suppressWarnings(graphics::arrows (x0=c(1:length(eigenvalues)), y0=confint[2,], y1=confint[1,], code=3, angle=90, length=0.05, col="red"))
 	suppressWarnings(graphics::arrows (x0=c(1:length(eigenvalues)), y0=confintperm[2,], y1=confintperm[1,], code=3, angle=90, length=0.05, col="gray45"))
@@ -367,14 +368,16 @@ if (Psiprob < alpha & Phiprob < alpha) { # test PC axes if both Psi and Phi are 
 
 			grDevices::dev.new()
 			graphics::par (mfrow=c(2,2), mar=c(5, 4, 1, 2) + 0.1)
-			plot (indexloadobs[i,], ylab=paste("Index loadings of PC",i), xlab="Variable", bty="n", ylim=c(0, max(confintindboot)), pch=19, col="red")
+			plot (indexloadobs[i,], ylab=paste("Index loadings of PC",i), xlab="Variable", bty="n", ylim=c(0, max(confintindboot)), pch=19, col="red", xaxt = "n")
+			graphics::axis(1, at = 1:dim(x)[2])
 			graphics::lines (meanind[k:(k-1+dim(x)[2])], type="p", pch=19, col="gray45")
 			suppressWarnings(graphics::arrows (x0=c(1:dim(x)[2]), y0=confintindboot[k:(k-1+dim(x)[2]),1], y1=confintindboot[k:(k-1+dim(x)[2]),2], code=3, angle=90, length=0.05, col="red"))
 			suppressWarnings(graphics::arrows (x0=c(1:dim(x)[2]), y0=confintind[k:(k-1+dim(x)[2]),1], y1=confintind[k:(k-1+dim(x)[2]),2], code=3, angle=90, length=0.05, col="gray45"))
 
 			} else {
 
-			plot (indexloadobs[i,], ylab=paste("Index loadings of PC",i), xlab="Variable", bty="n", ylim=c(0, max(confintindboot)), pch=19, col="red")
+			plot (indexloadobs[i,], ylab=paste("Index loadings of PC",i), xlab="Variable", bty="n", ylim=c(0, max(confintindboot)), pch=19, col="red", xaxt = "n")
+			graphics::axis(1, at = 1:dim(x)[2])
 			graphics::lines (meanind[k:(k-1+dim(x)[2])], type="p", pch=19, col="gray45")
 			suppressWarnings(graphics::arrows (x0=c(1:dim(x)[2]), y0=confintindboot[k:(k-1+dim(x)[2]),1], y1=confintindboot[k:(k-1+dim(x)[2]),2], code=3, angle=90, length=0.05, col="red"))
 			suppressWarnings(graphics::arrows (x0=c(1:dim(x)[2]), y0=confintind[k:(k-1+dim(x)[2]),1], y1=confintind[k:(k-1+dim(x)[2]),2], code=3, angle=90, length=0.05, col="gray45"))
