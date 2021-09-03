@@ -281,7 +281,7 @@ for (k in 1:length(eigenvalues)) {
 
 if (Psiprob < alpha & Phiprob < alpha) { # test PC axes if both Psi and Phi are significant
 
-# find out which PC's are significant
+# find out which PCs are significant
 
 	sigaxes <- 0
 	for (i in 1:length(eigenprob)) {
