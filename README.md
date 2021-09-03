@@ -9,7 +9,18 @@
 
 The goal of PCAtest is to evaluate the overall significance of a PCA, of
 each PC axis, and of the contributions of each observed variable to the
-significant axes based on permutation-based statistical tests.
+significant axes based on permutation-based statistical tests. PCAtest
+uses random permutations to build null distributions for several
+statistics of a PCAanalysis: Psi (Vieira 2012), Phi (Gleason and Staelin
+1975), the rank-of-roots (ter Braak 1988), the index of the loadings
+(Vieira 2012), and the correlations of the PC with the variables
+(Jackson 1991). Comparing these distributions with the observed values
+of the statistics, the function tests: (1) the hypothesis that there is
+more correlational structure among the observed variables than expected
+by random chance, (2) the statistical significance of each PC, and (3)
+the contribution of each observed variable to each significant PC. The
+function also calculates the sampling variance around mean observed
+statistics based on bootstrap replicates.
 
 ## Installation
 
@@ -36,8 +47,8 @@ result<-PCAtest(x, 100, 100, 0.05, corr=FALSE, plot=TRUE)
 #> 100 bootstrap replicates, 100 random permutations
 #> ========================================================
 #> 
-#> Empirical Psi = 5e-04, Max null Psi = 0.1572, Min null Psi = 0.0000, p-value = 0.85
-#> Empirical Phi = 0.0158, Max null Phi = 0.2804, Min null Phi = 1e-04, p-value = 0.85
+#> Empirical Psi = 0.0028, Max null Psi = 0.1748, Min null Psi = 0.0000, p-value = 0.7
+#> Empirical Phi = 0.0372, Max null Phi = 0.2956, Min null Phi = 9e-04, p-value = 0.7
 #> 
 #> PCA is not significant!
 ```
@@ -56,11 +67,11 @@ PCAout<-PCAtest(x, 100, 100, 0.05, corr=FALSE, plot=TRUE)
 #> 100 bootstrap replicates, 100 random permutations
 #> ========================================================
 #> 
-#> Empirical Psi = 2.0000, Max null Psi = 0.1617, Min null Psi = 0.0000, p-value = 0
-#> Empirical Phi = 1.0000, Max null Phi = 0.2843, Min null Phi = 3e-04, p-value = 0
+#> Empirical Psi = 2.0000, Max null Psi = 0.1442, Min null Psi = 0.0000, p-value = 0
+#> Empirical Phi = 1.0000, Max null Phi = 0.2685, Min null Phi = 2e-04, p-value = 0
 #> 
-#> Empirical eigenvalue #1 = 2, Max null eigenvalue = 1.2843, p-value = 0
-#> Empirical eigenvalue #2 = 0, Max null eigenvalue = 0.99966, p-value = 1
+#> Empirical eigenvalue #1 = 2, Max null eigenvalue = 1.26854, p-value = 0
+#> Empirical eigenvalue #2 = 0, Max null eigenvalue = 0.99981, p-value = 1
 #> 
 #> PC 1 is significant and accounts for 100% (95%-CI:100-100) of the total variation
 #> 
