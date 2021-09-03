@@ -1,6 +1,6 @@
 Package: PCAtest
 Title: Statistical significance of PCA
-Version: 0.0.0.9000
+Version: 0.0.1
 Authors@R: 
     person(given = "Arley",
            family = "Camargo",
@@ -9,7 +9,7 @@ Authors@R:
            comment = c(ORCID = "0000-0001-9082-6348"))
 Description: PCAtest is an R function that implements permutation-based
         statistical tests to evaluate the overall significance of a PCA,
-        the significance of each PC axis, and of the contributions of each
+        the significance of each PC axis, and the contributions of each
         observed variable to the significant axes.
 License: MIT + file LICENSE
 Encoding: UTF-8
