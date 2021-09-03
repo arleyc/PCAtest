@@ -13,14 +13,8 @@ significant axes based on permutation-based statistical tests.
 
 ## Installation
 
-You can install the released version of PCAtest from
-[CRAN](https://CRAN.R-project.org) with:
-
-``` r
-install.packages("PCAtest")
-```
-
-And the development version from [GitHub](https://github.com/) with:
+You can install the released and the development versions from
+[GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("devtools")
@@ -28,8 +22,6 @@ devtools::install_github("arleyc/PCAtest")
 ```
 
 ## Example
-
-This is a basic example which shows you how to solve a common problem:
 
 ``` r
 library(PCAtest)
@@ -44,8 +36,10 @@ result<-PCAtest(x, 100, 100, 0.05, corr=FALSE, plot=TRUE)
 #> 100 bootstrap replicates, 100 random permutations
 #> ========================================================
 #> 
-#> Empirical Psi = 0.0161, Max null Psi = 0.2477, Min null Psi = 0.0000, p-value = 0.4
-#> Empirical Phi = 0.0897, Max null Phi = 0.3519, Min null Phi = 9e-04, p-value = 0.4
+#> Empirical Psi = 5e-04, Max null Psi = 0.1572, Min null Psi = 0.0000, p-value = 0.85
+#> Empirical Phi = 0.0158, Max null Phi = 0.2804, Min null Phi = 1e-04, p-value = 0.85
+#> 
+#> PCA is not significant!
 ```
 
 <img src="man/figures/README-example1-1.png" width="100%" />
@@ -62,11 +56,11 @@ PCAout<-PCAtest(x, 100, 100, 0.05, corr=FALSE, plot=TRUE)
 #> 100 bootstrap replicates, 100 random permutations
 #> ========================================================
 #> 
-#> Empirical Psi = 2.0000, Max null Psi = 0.1354, Min null Psi = 0.0000, p-value = 0
-#> Empirical Phi = 1.0000, Max null Phi = 0.2602, Min null Phi = 8e-04, p-value = 0
+#> Empirical Psi = 2.0000, Max null Psi = 0.1617, Min null Psi = 0.0000, p-value = 0
+#> Empirical Phi = 1.0000, Max null Phi = 0.2843, Min null Phi = 3e-04, p-value = 0
 #> 
-#> Empirical eigenvalue #1 = 2, Max null eigenvalue = 1.26021, p-value = 0
-#> Empirical eigenvalue #2 = 0, Max null eigenvalue = 0.99924, p-value = 1
+#> Empirical eigenvalue #1 = 2, Max null eigenvalue = 1.2843, p-value = 0
+#> Empirical eigenvalue #2 = 0, Max null eigenvalue = 0.99966, p-value = 1
 #> 
 #> PC 1 is significant and accounts for 100% (95%-CI:100-100) of the total variation
 #> 

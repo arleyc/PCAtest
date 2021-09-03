@@ -22,21 +22,13 @@ The goal of PCAtest is to evaluate the overall significance of a PCA, of each PC
 
 ## Installation
 
-You can install the released version of PCAtest from [CRAN](https://CRAN.R-project.org) with:
-
-``` r
-install.packages("PCAtest")
-```
-
-And the development version from [GitHub](https://github.com/) with:
+You can install the released and the development versions from [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("devtools")
 devtools::install_github("arleyc/PCAtest")
 ```
 ## Example
-
-This is a basic example which shows you how to solve a common problem:
 
 ```{r example1}
 library(PCAtest)

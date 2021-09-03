@@ -292,7 +292,7 @@ cat(paste("\n", "========================================================", sep=
 			paste("Empirical Phi = ", format(round(Phiobs,4),nsmall=4),", Max null Phi = ", format(round(max(Phi),4),nsmall=4),", Min null Phi = ", format(round(min(Phi),4),nsmall=4),", p-value = ", Phiprob, sep=""), sep="\n")
 
 if (Psiprob >= alpha & Phiprob >= alpha) { # if both Psi and Phi are not significant
-  cat(paste ("PCA is not significant!"))
+  cat(paste ("\n", "PCA is not significant!", sep=""))
   }
 
 if (Psiprob < alpha & Phiprob < alpha) { # test PC axes if both Psi and Phi are significant
