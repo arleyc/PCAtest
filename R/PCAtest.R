@@ -25,37 +25,66 @@
 #' @return
 #' An object of class “list” with the following elements:
 #' \describe{
-#'  \item{"Psi"}{Psiobsthe observed Psi statistic}
-#'   Phiobs (the observed Phi statistic), Psi (the null distribution of Psi values), Phi
-#'   (the null distribution of Phi values), pervarobs (the percentage of variance explained
-#'   by each PC based on the observed data), pervarboot (the percentage of variance explained
-#'   by each PC based on the bootstrapped data), pervarperm (the percentage of data explained
-#'   by each PC based on the permuted data), indexloadobs (the index of the loadings of the
-#'   observed data), indexloadboot (the index of the loadings of the bootstrapped data),
-#'   indexloadperm (the index of the loadings of the permuted data), corobs (if corr=TRUE,
-#'   the correlations of the observed variables with each significant PC), corboot (if corr=TRUE,
-#'   the correlations of the observed variables with each significant PC based on the bootstrapped
-#'   data), corperm (if corr=TRUE, the correlations of the observed variables with each significant
-#'   PC based on permuted data).
+#'   \item{psiobs}{The observed Psi statistic.}
+#'
+#'   \item{phiobs}{The observed Phi statistic.}
+#'
+#'   \item{psi}{The null distribution of Psi values.}
+#'
+#'   \item{phi}{The null distribution of Phi values.}
+#'
+#'   \item{pervarobs}{The percentage of variance explained by each PC based on the observed data.}
+#'
+#'   \item{pervarboot}{The percentage of variance explained by each PC based on the bootstrapped data.}
+#'
+#'   \item{pervarperm}{The percentage of data explained by each PC based on the permuted data.}
+#'
+#'   \item{indexloadobs}{The index of the loadings of the observed data.}
+#'
+#'   \item{indexloadboot}{The index of the loadings of the bootstrapped data.}
+#'
+#'   \item{indexloadperm}{The index of the loadings of the permuted data.}
+#'
+#'   \item{corobs}{If corr=TRUE, the correlations of the observed variables with each significant PC.}
+#'
+#'   \item{corboot}{If corr=TRUE, the correlations of the observed variables with each significant PC based on the bootstrapped data.}
+#'
+#'   \item{corperm}{If corr=TRUE, the correlations of the observed variables with each significant PC based on permuted data.}
+#'}
 #'
 #' @author
 #' Arley Camargo
 #'
 #' @references
-#' Gleason, T. C. and Staelin R. (1975) A proposal for handling missing data. Psychometrika, 40, 229–252.
-#' Jackson, J. E. (1991) A User’s Guide to Principal Components. John Wiley & Sons, New York, USA.
-#' Ringnér, M. (2008) What is principal component analysis? Nature Biotechnology, 26, 303–304.
-#' ter Braak, C. F. J. (1990) Update notes: CANOCO (version 3.1). Agricultural Mattematic Group, Report LWA-88-02, Wagningen, Netherlands.
-#' Vieira, V. M. N. C. S. (2012) Permutation tests to estimate significances on Principal Components Analysis. Computational Ecology and Software, 2, 103–123.
-#' Wong, M. K. L. and Carmona, C. P. (2021) Including intraspecific trait variability to avoid distortion of functional diversity and ecological inference: Lessons from natural assemblages. Methods in Ecology and Evolution. https://doi.org/10.1111/2041- 210X.13568.
-#'
+#' \itemize{
+#' \item Gleason, T. C. and Staelin R. (1975) A proposal for handling missing data. Psychometrika, 40, 229–252.
+#' \item Jackson, J. E. (1991) A User’s Guide to Principal Components. John Wiley & Sons, New York, USA.
+#' \item Ringnér, M. (2008) What is principal component analysis? Nature Biotechnology, 26, 303–304.
+#' \item ter Braak, C. F. J. (1990) Update notes: CANOCO (version 3.1). Agricultural Mattematic Group, Report LWA-88-02, Wagningen, Netherlands.
+#' \item Vieira, V. M. N. C. S. (2012) Permutation tests to estimate significances on Principal Components Analysis. Computational Ecology and Software, 2, 103–123.
+#' \item Wong, M. K. L. and Carmona, C. P. (2021) Including intraspecific trait variability to avoid distortion of functional diversity and ecological inference: Lessons from natural assemblages. Methods in Ecology and Evolution. https://doi.org/10.1111/2041- 210X.13568.
+#'}
 #' @export
 #'
 #' @examples
-#' v1<-runif(100,0,1)
-#' v2<-runif(100,0,1)
-#' x<-cbind(v1,v2)
-#' PCAtest(x, 1000, 1000, 0.05, corr=FALSE, plot=TRUE)
+#'#PCA analysis of five uncorrelated variables
+#'data("ex0")
+#'result<-PCAtest(ex0, 100, 100, 0.05, corr=FALSE, plot=TRUE)
+#'
+#'#PCA analysis of five correlated (r=0.5) variables
+#'data("ex05")
+#'result<-PCAtest(ex05, 100, 100, 0.05, corr=FALSE, plot=TRUE)
+#'
+#'#PCA analysis of five correlated (r=1) variables
+#'v1<-seq(0,1,0.01)
+#'v5=v4=v3=v2=v1
+#'ex1<-cbind(v1,v2,v3,v4,v5)
+#'result<-PCAtest(ex1, 100, 100, 0.05, corr=FALSE, plot=TRUE)
+#'
+#'#PCA analysis of seven morphological variables from 29 ant species (from
+#'#Wong and Carmona 2021,  https://doi.org/10.1111/2041-210X.13568)
+#'data("ants")
+#'result<-PCAtest(ants, 100, 100, 0.05, corr=FALSE, plot=TRUE)
 
 PCAtest <- function(x, nperm=1000, nboot=1000, alpha=0.05, corr=F, plot=T) {
 
