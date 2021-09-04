@@ -50,7 +50,7 @@ An object of class “list” with the following elements:
 }
 }
 \description{
-\code{PCAtest} uses random permutations to build null distributions for
+PCAtest uses random permutations to build null distributions for
 several statistics of a PCA analysis: Psi (Vieira 2012), Phi (Gleason and
 Staelin 1975), the rank-of-roots (ter Braak 1988), the index of the
 loadings (Vieira 2012), and the correlations of the PC with the variables
@@ -63,7 +63,7 @@ function also calculates the sampling variance around mean observed
 statistics based on bootstrap replicates.
 }
 \details{
-\code{PCAtest} uses the function \code{stats::prcomp} to run a PCA using the arguments scale = TRUE and center = TRUE. PCAtest plots four types of graphs in a single page: (1) a histogram showing the null distribution and the observed value of the Psi statistic, (2) a histogram showing the null distribution and the observed value of the Phi statistic, (3) a bar plot of the percentage of explained variance of each PC1, PC2, ..., etc., showing the sampling variance based on bootstrap replicates and random permutations with 95\%-confidence intervals, and (4) a bar plot of the index of the loadings of each observed variable for PC1, showing the sampling variance of bootstrap replicates and random permutations with 95\%- confidence intervals. If more than one PC is significant, additional plots for the index of the loadings are shown in as many new pages as necessary given the number of significant PCs. If the PCA is not significant, based on the Psi and Phi testing results, only histograms (1) and (2) are shown.
+PCAtest uses the function stats::prcomp to run a PCA using the arguments scale = TRUE and center = TRUE. PCAtest plots four types of graphs in a single page: (1) a histogram showing the null distribution and the observed value of the Psi statistic, (2) a histogram showing the null distribution and the observed value of the Phi statistic, (3) a bar plot of the percentage of explained variance of each PC1, PC2, ..., etc., showing the sampling variance based on bootstrap replicates and random permutations with 95\%-confidence intervals, and (4) a bar plot of the index of the loadings of each observed variable for PC1, showing the sampling variance of bootstrap replicates and random permutations with 95\%- confidence intervals. If more than one PC is significant, additional plots for the index of the loadings are shown in as many new pages as necessary given the number of significant PCs. If the PCA is not significant, based on the Psi and Phi testing results, only histograms (1) and (2) are shown.
 }
 \examples{
 #PCA analysis of five uncorrelated variables
@@ -81,7 +81,7 @@ ex1<-cbind(v1,v2,v3,v4,v5)
 result<-PCAtest(ex1, 100, 100, 0.05, corr=FALSE, plot=TRUE)
 
 #PCA analysis of seven morphological variables from 29 ant species (from
-#Wong and Carmona 2021,  https://doi.org/10.1111/2041-210X.13568)
+#Wong and Carmona 2021, https://doi.org/10.1111/2041-210X.13568)
 data("ants")
 result<-PCAtest(ants, 100, 100, 0.05, corr=FALSE, plot=TRUE)
 }
@@ -92,7 +92,7 @@ result<-PCAtest(ants, 100, 100, 0.05, corr=FALSE, plot=TRUE)
 \item Ringnér, M. (2008) What is principal component analysis? Nature Biotechnology, 26, 303–304.
 \item ter Braak, C. F. J. (1990) Update notes: CANOCO (version 3.1). Agricultural Mattematic Group, Report LWA-88-02, Wagningen, Netherlands.
 \item Vieira, V. M. N. C. S. (2012) Permutation tests to estimate significances on Principal Components Analysis. Computational Ecology and Software, 2, 103–123.
-\item Wong, M. K. L. and Carmona, C. P. (2021) Including intraspecific trait variability to avoid distortion of functional diversity and ecological inference: Lessons from natural assemblages. Methods in Ecology and Evolution. https://doi.org/10.1111/2041- 210X.13568.
+\item Wong, M. K. L. and Carmona, C. P. (2021) Including intraspecific trait variability to avoid distortion of functional diversity and ecological inference: Lessons from natural assemblages. Methods in Ecology and Evolution. \url{https://doi.org/10.1111/2041- 210X.13568}.
 }
 }
 \author{
