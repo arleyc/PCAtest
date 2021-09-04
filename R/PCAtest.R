@@ -1,13 +1,16 @@
 #' PCAtest: Statistical Significance of PCA
 #'
-#' \code{PCAtest} uses random permutations to build null distributions for several statistics of a PCA
-#'   analysis: Psi (Vieira 2012), Phi (Gleason and Staelin 1975), the rank-of-roots (ter Braak 1988),
-#'   the index of the loadings (Vieira 2012), and the correlations of the PC with the variables (Jackson 1991).
-#'   Comparing these distributions with the observed values of the statistics, the function tests:
-#'   (1) the hypothesis that there is more correlational structure among the observed variables than
-#'   expected by random chance, (2) the statistical significance of each PC, and (3) the contribution
-#'   of each observed variable to each significant PC. The function also calculates the sampling variance
-#'   around mean observed statistics based on bootstrap replicates.
+#' \code{PCAtest} uses random permutations to build null distributions for
+#'   several statistics of a PCA analysis: Psi (Vieira 2012), Phi (Gleason and
+#'   Staelin 1975), the rank-of-roots (ter Braak 1988), the index of the
+#'   loadings (Vieira 2012), and the correlations of the PC with the variables
+#'   (Jackson 1991). Comparing these distributions with the observed values of
+#'   the statistics, the function tests: (1) the hypothesis that there is more
+#'   correlational structure among the observed variables than expected by
+#'   random chance, (2) the statistical significance of each PC, and (3) the
+#'   contribution of each observed variable to each significant PC. The
+#'   function also calculates the sampling variance around mean observed
+#'   statistics based on bootstrap replicates.
 #'
 #' @param x A matrix or dataframe with variables in the columns and the observations in the rows.
 #' @param nperm Number of random permutations to build null distributions of the statistics.
@@ -20,7 +23,9 @@
 #' \code{PCAtest} uses the function \code{stats::prcomp} to run a PCA using the arguments scale = TRUE and center = TRUE. PCAtest plots four types of graphs in a single page: (1) a histogram showing the null distribution and the observed value of the Psi statistic, (2) a histogram showing the null distribution and the observed value of the Phi statistic, (3) a bar plot of the percentage of explained variance of each PC1, PC2, ..., etc., showing the sampling variance based on bootstrap replicates and random permutations with 95%-confidence intervals, and (4) a bar plot of the index of the loadings of each observed variable for PC1, showing the sampling variance of bootstrap replicates and random permutations with 95%- confidence intervals. If more than one PC is significant, additional plots for the index of the loadings are shown in as many new pages as necessary given the number of significant PCs. If the PCA is not significant, based on the Psi and Phi testing results, only histograms (1) and (2) are shown.
 #'
 #' @return
-#' An object of class “list” with the following elements: Psiobs (the observed Psi statistic),
+#' An object of class “list” with the following elements:
+#' \describe{
+#'  \item{"Psi"}{Psiobsthe observed Psi statistic}
 #'   Phiobs (the observed Phi statistic), Psi (the null distribution of Psi values), Phi
 #'   (the null distribution of Phi values), pervarobs (the percentage of variance explained
 #'   by each PC based on the observed data), pervarboot (the percentage of variance explained

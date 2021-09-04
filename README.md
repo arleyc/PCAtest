@@ -11,7 +11,7 @@ The goal of PCAtest is to evaluate the overall significance of a PCA, of
 each PC axis, and of the contributions of each observed variable to the
 significant axes based on permutation-based statistical tests. PCAtest
 uses random permutations to build null distributions for several
-statistics of a PCAanalysis: Psi (Vieira 2012), Phi (Gleason and Staelin
+statistics of a PCAanalysis: Psi (Vieira 2012),Phi (Gleason and Staelin
 1975), the rank-of-roots (ter Braak 1988), the index of the loadings
 (Vieira 2012), and the correlations of the PC with the variables
 (Jackson 1991). Comparing these distributions with the observed values
@@ -45,8 +45,8 @@ result<-PCAtest(ex0, 100, 100, 0.05, corr=FALSE, plot=TRUE)
 #> 100 bootstrap replicates, 100 random permutations
 #> ========================================================
 #> 
-#> Empirical Psi = 0.1691, Max null Psi = 0.4437, Min null Psi = 0.0490, p-value = 0.67
-#> Empirical Phi = 0.0920, Max null Phi = 0.1489, Min null Phi = 0.0495, p-value = 0.67
+#> Empirical Psi = 0.1691, Max null Psi = 0.5065, Min null Psi = 0.0234, p-value = 0.52
+#> Empirical Phi = 0.0920, Max null Phi = 0.1591, Min null Phi = 0.0342, p-value = 0.52
 #> 
 #> PCA is not significant!
 ```
@@ -63,16 +63,16 @@ result<-PCAtest(ex05, 100, 100, 0.05, corr=FALSE, plot=TRUE)
 #> 100 bootstrap replicates, 100 random permutations
 #> ========================================================
 #> 
-#> Empirical Psi = 5.4655, Max null Psi = 0.5097, Min null Psi = 0.0476, p-value = 0
-#> Empirical Phi = 0.5228, Max null Phi = 0.1596, Min null Phi = 0.0488, p-value = 0
+#> Empirical Psi = 5.4655, Max null Psi = 0.3982, Min null Psi = 0.0448, p-value = 0
+#> Empirical Phi = 0.5228, Max null Phi = 0.1411, Min null Phi = 0.0473, p-value = 0
 #> 
-#> Empirical eigenvalue #1 = 3.08098, Max null eigenvalue = 1.55051, p-value = 0
-#> Empirical eigenvalue #2 = 0.63526, Max null eigenvalue = 1.28485, p-value = 1
-#> Empirical eigenvalue #3 = 0.52603, Max null eigenvalue = 1.08123, p-value = 1
-#> Empirical eigenvalue #4 = 0.43234, Max null eigenvalue = 0.9792, p-value = 1
-#> Empirical eigenvalue #5 = 0.3254, Max null eigenvalue = 0.87685, p-value = 1
+#> Empirical eigenvalue #1 = 3.08098, Max null eigenvalue = 1.49068, p-value = 0
+#> Empirical eigenvalue #2 = 0.63526, Max null eigenvalue = 1.29648, p-value = 1
+#> Empirical eigenvalue #3 = 0.52603, Max null eigenvalue = 1.09247, p-value = 1
+#> Empirical eigenvalue #4 = 0.43234, Max null eigenvalue = 0.96903, p-value = 1
+#> Empirical eigenvalue #5 = 0.3254, Max null eigenvalue = 0.8795, p-value = 1
 #> 
-#> PC 1 is significant and accounts for 61.6% (95%-CI:54.3-68.2) of the total variation
+#> PC 1 is significant and accounts for 61.6% (95%-CI:53.8-68.4) of the total variation
 #> 
 #> Variables 1, 2, 3, 4, and 5 have significant loadings on PC 1
 ```
@@ -91,14 +91,14 @@ result<-PCAtest(ex1, 100, 100, 0.05, corr=FALSE, plot=TRUE)
 #> 100 bootstrap replicates, 100 random permutations
 #> ========================================================
 #> 
-#> Empirical Psi = 20.0000, Max null Psi = 0.5486, Min null Psi = 0.0542, p-value = 0
-#> Empirical Phi = 1.0000, Max null Phi = 0.1656, Min null Phi = 0.0521, p-value = 0
+#> Empirical Psi = 20.0000, Max null Psi = 0.6053, Min null Psi = 0.0618, p-value = 0
+#> Empirical Phi = 1.0000, Max null Phi = 0.1740, Min null Phi = 0.0556, p-value = 0
 #> 
-#> Empirical eigenvalue #1 = 5, Max null eigenvalue = 1.45789, p-value = 0
-#> Empirical eigenvalue #2 = 0, Max null eigenvalue = 1.32639, p-value = 1
-#> Empirical eigenvalue #3 = 0, Max null eigenvalue = 1.13834, p-value = 1
-#> Empirical eigenvalue #4 = 0, Max null eigenvalue = 0.97442, p-value = 1
-#> Empirical eigenvalue #5 = 0, Max null eigenvalue = 0.88724, p-value = 1
+#> Empirical eigenvalue #1 = 5, Max null eigenvalue = 1.55162, p-value = 0
+#> Empirical eigenvalue #2 = 0, Max null eigenvalue = 1.28892, p-value = 1
+#> Empirical eigenvalue #3 = 0, Max null eigenvalue = 1.08888, p-value = 1
+#> Empirical eigenvalue #4 = 0, Max null eigenvalue = 0.99527, p-value = 1
+#> Empirical eigenvalue #5 = 0, Max null eigenvalue = 0.86871, p-value = 1
 #> 
 #> PC 1 is significant and accounts for 100% (95%-CI:100-100) of the total variation
 #> 
@@ -118,18 +118,18 @@ result<-PCAtest(ants, 100, 100, 0.05, corr=FALSE, plot=TRUE)
 #> 100 bootstrap replicates, 100 random permutations
 #> ========================================================
 #> 
-#> Empirical Psi = 10.9186, Max null Psi = 2.9768, Min null Psi = 0.4537, p-value = 0
-#> Empirical Phi = 0.5099, Max null Phi = 0.2662, Min null Phi = 0.1039, p-value = 0
+#> Empirical Psi = 10.9186, Max null Psi = 3.5190, Min null Psi = 0.5724, p-value = 0
+#> Empirical Phi = 0.5099, Max null Phi = 0.2895, Min null Phi = 0.1167, p-value = 0
 #> 
-#> Empirical eigenvalue #1 = 3.84712, Max null eigenvalue = 2.4439, p-value = 0
-#> Empirical eigenvalue #2 = 1.52017, Max null eigenvalue = 1.74442, p-value = 0.15
-#> Empirical eigenvalue #3 = 0.70634, Max null eigenvalue = 1.35568, p-value = 1
-#> Empirical eigenvalue #4 = 0.41356, Max null eigenvalue = 1.10843, p-value = 1
-#> Empirical eigenvalue #5 = 0.34001, Max null eigenvalue = 1.03463, p-value = 1
-#> Empirical eigenvalue #6 = 0.14515, Max null eigenvalue = 0.80556, p-value = 1
-#> Empirical eigenvalue #7 = 0.02765, Max null eigenvalue = 0.62884, p-value = 1
+#> Empirical eigenvalue #1 = 3.84712, Max null eigenvalue = 2.48287, p-value = 0
+#> Empirical eigenvalue #2 = 1.52017, Max null eigenvalue = 1.70754, p-value = 0.23
+#> Empirical eigenvalue #3 = 0.70634, Max null eigenvalue = 1.4409, p-value = 1
+#> Empirical eigenvalue #4 = 0.41356, Max null eigenvalue = 1.1566, p-value = 1
+#> Empirical eigenvalue #5 = 0.34001, Max null eigenvalue = 0.94203, p-value = 1
+#> Empirical eigenvalue #6 = 0.14515, Max null eigenvalue = 0.74414, p-value = 1
+#> Empirical eigenvalue #7 = 0.02765, Max null eigenvalue = 0.63742, p-value = 1
 #> 
-#> PC 1 is significant and accounts for 55% (95%-CI:42.9-63.9) of the total variation
+#> PC 1 is significant and accounts for 55% (95%-CI:44.9-66.7) of the total variation
 #> 
 #> Variables 1, 2, 3, 4, 5, and 7 have significant loadings on PC 1
 ```
