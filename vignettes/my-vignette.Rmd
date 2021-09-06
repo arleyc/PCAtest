@@ -26,7 +26,7 @@ Overall significance of a PCA
 ---
 PCAtest should not reject the null hypothesis of a non-significant PCA, if there is no correlation structure among the variables. We can generate and analyze in PCAtest a set of uncorrelated variables:
 
-```{r, out.width="100%", out.height="80%",fig.width = 400/72, fig.height = 400/72, fig.retina=2, dpi=100}
+```{r, out.width="80%", out.height="80%",fig.width = 500/72, fig.height = 500/72, fig.retina=2, dpi=100}
 library(PCAtest)
 data("ex0")
 result<-PCAtest(ex0, 100, 100, 0.05, corr=FALSE, plot=TRUE)
@@ -34,8 +34,7 @@ result<-PCAtest(ex0, 100, 100, 0.05, corr=FALSE, plot=TRUE)
 
 On the other hand, PCA should reject this hypothesis if there is some correlation among the variables. In this example, variables were generated with a correlation coefficient of 0.5:
 
-```{example 2}
-library(PCAtest)
+```{r, out.width="80%", out.height="80%",fig.width = 500/72, fig.height = 500/72, fig.retina=2, dpi=100}
 data("ex05")
 result<-PCAtest(ex0, 100, 100, 0.05, corr=FALSE, plot=TRUE)
 ```
@@ -43,6 +42,10 @@ result<-PCAtest(ex0, 100, 100, 0.05, corr=FALSE, plot=TRUE)
 
 Selecting the number of significant PCs
 ---
+```{r, out.width="80%", out.height="80%",fig.width = 500/72, fig.height = 500/72, fig.retina=2, dpi=100}
+data("ants")
+result<-PCAtest(ex0, 100, 100, 0.05, corr=FALSE, plot=TRUE)
+```
 
 
 Testing which variables have significant loadings
