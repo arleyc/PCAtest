@@ -411,7 +411,7 @@ h <- graphics::hist(Psi,plot=FALSE)
 h$density = h$counts/sum(h$counts)*100
 plot(h,freq=FALSE, col="gray45", xlab="Psi", xlim=c(0, max(max(Psi), Psiobs)), ylab="Percentage of permutations", main="")
 graphics::arrows(x0=Psiobs, y0=max(h$density)/10, y1=0, col="red", lwd=2, length=0.1)
-graphics::legend("topright", legend=c("Null distribution","Empirical value"), fill=c("gray45","red"), bty="n", cex=0.5)
+graphics::legend("topright", legend=c("Null distribution","Empirical value"), fill=c("gray45","red"), bty="n", cex=1)
 
 # plot of empirical and randomized Phi
 
