@@ -1,0 +1,49 @@
+---
+title: "PCAtest: Statistical significance of PCA"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Basic usage of PCAtest}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+Introduction
+---
+A PCA is meaningful and should only be applied if there is a significant correlation structure among at least some variables in a dataset. Due to sampling variance alone, it is possible that some level of random correlation structure could occurred in the data. Therefore, it is necessary to evaluate if the observed correlation structure is higher than expected to chance alone.
+
+PCAtest uses a pair of statistics, Psi and Phi, based on the eigenvalues (roots) of a PCA and evaluates their significance by comparing observed values with the null distributions. The expected values values of Psi and Phi are calculated from random permutations of the observations within variables, which effectively removes any correlation structure among variables. If observed statistics are not larger than the expected null distributions, PCA is meaningless and it should not be used.
+
+If the null hypothesis of a non significant PCA is rejected, PCAtest also calculates observed values and builds null distributions for two other statistics: the index of the loadings and the correlations of each PC with the variables in order to select the number of significant PCs, and the contribution of the observed variables to each significant PC.
+
+
+Overall significance of a PCA
+---
+PCAtest should not reject the null hypothesis of a non-significant PCA, if there is no correlation structure among the variables. We can generate and analyze in PCAtest a set of uncorrelated variables:
+
+```{r, out.width="100%", out.height="80%",fig.width = 400/72, fig.height = 400/72, fig.retina=2, dpi=100}
+library(PCAtest)
+data("ex0")
+result<-PCAtest(ex0, 100, 100, 0.05, corr=FALSE, plot=TRUE)
+```
+
+On the other hand, PCA should reject this hypothesis if there is some correlation among the variables. In this example, variables were generated with a correlation coefficient of 0.5:
+
+```{example 2}
+library(PCAtest)
+data("ex05")
+result<-PCAtest(ex0, 100, 100, 0.05, corr=FALSE, plot=TRUE)
+```
+
+
+Selecting the number of significant PCs
+---
+
+
+Testing which variables have significant loadings
+---
