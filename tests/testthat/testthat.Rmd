@@ -9,7 +9,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 PCA of uncorrelated variables is not significant
 ---
-```{r, out.width="80%", out.height="80%",fig.width = 500/72, fig.height = 500/72, fig.retina=2, dpi=100}
+```{r}
 library(testthat)
 library(PCAtest)
 
@@ -23,7 +23,7 @@ test_that("PCA of uncorrelated variables is not significant",{
 
 PCA of two fully-correlated variables has only PC1 significant
 ---
-```{r, out.width="80%", out.height="80%",fig.width = 500/72, fig.height = 500/72, fig.retina=2, dpi=100}
+```{r}
 v1<-seq(0,1,0.01)
 v2<-seq(0,1,0.01)
 x<-cbind(v1,v2)
