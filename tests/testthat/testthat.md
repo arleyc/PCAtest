@@ -25,8 +25,8 @@ PCAout<-PCAtest(ex0, 100, 100, 0.05, indload=F, varcorr=FALSE, counter=F, plot=F
     ## 100 bootstrap replicates, 100 random permutations
     ## ========================================================
     ## 
-    ## Empirical Psi = 0.1691, Max null Psi = 0.6357, Min null Psi = 0.0457, p-value = 0.55
-    ## Empirical Phi = 0.0920, Max null Phi = 0.1783, Min null Phi = 0.0478, p-value = 0.55
+    ## Empirical Psi = 0.1691, Max null Psi = 0.3944, Min null Psi = 0.0555, p-value = 0.66
+    ## Empirical Phi = 0.0920, Max null Phi = 0.1404, Min null Phi = 0.0527, p-value = 0.66
     ## 
     ## PCA is not significant!
 
@@ -37,7 +37,7 @@ test_that("PCA of uncorrelated variables is not significant",{
   })
 ```
 
-    ## Test passed 😀
+    ## Test passed 🎉
 
 ## PCA of two fully-correlated variables has only PC1 significant
 
@@ -62,11 +62,11 @@ PCAout<-PCAtest(x, 100, 100, 0.05, indload=F, varcorr=FALSE, counter=F, plot=F)
     ## 100 bootstrap replicates, 100 random permutations
     ## ========================================================
     ## 
-    ## Empirical Psi = 2.0000, Max null Psi = 0.1179, Min null Psi = 0.0000, p-value = 0
-    ## Empirical Phi = 1.0000, Max null Phi = 0.2428, Min null Phi = 0.0017, p-value = 0
+    ## Empirical Psi = 2.0000, Max null Psi = 0.2357, Min null Psi = 0.0000, p-value = 0
+    ## Empirical Phi = 1.0000, Max null Phi = 0.3433, Min null Phi = 6e-04, p-value = 0
     ## 
-    ## Empirical eigenvalue #1 = 2, Max null eigenvalue = 1.24276, p-value = 0
-    ## Empirical eigenvalue #2 = 0, Max null eigenvalue = 0.99825, p-value = 1
+    ## Empirical eigenvalue #1 = 2, Max null eigenvalue = 1.34327, p-value = 0
+    ## Empirical eigenvalue #2 = 0, Max null eigenvalue = 0.99942, p-value = 1
     ## 
     ## PC 1 is significant and accounts for 100% (95%-CI:100-100) of the total variation
 
@@ -79,4 +79,4 @@ test_that("PCA of two fully-correlated variables has Psi=2, Phi=1,
 })
 ```
 
-    ## Test passed 🎉
+    ## Test passed 🌈
