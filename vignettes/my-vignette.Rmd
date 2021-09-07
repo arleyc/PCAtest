@@ -15,11 +15,11 @@ knitr::opts_chunk$set(
 ```
 Introduction
 ---
-A PCA is meaningful and should only be applied if there is a significant correlation structure among at least some variables in a dataset. Due to sampling variance alone, it is possible that some level of random correlation structure could occurred in the data. Therefore, it is necessary to evaluate if the observed correlation structure is higher than expected to chance alone.
+A PCA is meaningful and should only be applied if there is a significant correlation structure among at least some of the variables in a dataset. Due to sampling variance alone, it is possible that some level of random correlation structure could occur in the data. Therefore, it is necessary to evaluate if the observed correlation structure is higher than expected due to chance alone.
 
-PCAtest uses a pair of statistics, Psi and Phi, based on the eigenvalues (roots) of a PCA and evaluates their significance by comparing observed values with the null distributions. The expected values values of Psi and Phi are calculated from random permutations of the observations within variables, which effectively removes any correlation structure among variables. If observed statistics are not larger than the expected null distributions, PCA is meaningless and it should not be used.
+PCAtest uses a pair of statistics, Psi and Phi, based on the eigenvalues (roots) of a PCA to evaluate its significance by comparing observed values with their null distributions. The expected values values of Psi and Phi are calculated from random permutations of the observations within variables, which effectively removes any correlation structure among variables. If the observed statistics are not larger than the expected null distributions, PCA is meaningless and it should not be used.
 
-If the null hypothesis of a non significant PCA is rejected, PCAtest also calculates observed values and builds null distributions for two other statistics: the index of the loadings and the correlations of each PC with the variables in order to select the number of significant PCs, and the contribution of the observed variables to each significant PC.
+If the null hypothesis of a non-significant PCA is rejected, then PCAtest calculates the observed eigenvalues and builds null distributions to select the number of significant PCs. In addition, PCAtest also calculates two other statistics: the index of the loadings and the correlations of each PC with the variables, to test the contribution of the observed variables to each significant PC.
 
 Overall significance of a PCA
 ---
