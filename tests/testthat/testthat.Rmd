@@ -1,6 +1,6 @@
 ---
 title: "Automated testing of PCAtest"
-output: rmarkdown::html_vignette
+output: github_document
 ---
 
 ```{r setup, include=FALSE}

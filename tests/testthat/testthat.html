@@ -162,15 +162,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 100 bootstrap replicates, 100 random permutations
 ## ========================================================
 ## 
-## Empirical Psi = 0.1691, Max null Psi = 0.6090, Min null Psi = 0.0491, p-value = 0.63
-## Empirical Phi = 0.0920, Max null Phi = 0.1745, Min null Phi = 0.0496, p-value = 0.63
+## Empirical Psi = 0.1691, Max null Psi = 0.4618, Min null Psi = 0.0573, p-value = 0.52
+## Empirical Phi = 0.0920, Max null Phi = 0.1519, Min null Phi = 0.0535, p-value = 0.52
 ## 
 ## PCA is not significant!</code></pre>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">test_that</span>(<span class="st">&quot;PCA of uncorrelated variables is not significant&quot;</span>,{</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">expect_gt</span>(<span class="fu">max</span>(PCAout<span class="sc">$</span><span class="st">`</span><span class="at">Null Psi</span><span class="st">`</span>),PCAout<span class="sc">$</span><span class="st">`</span><span class="at">Empirical Psi</span><span class="st">`</span>)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">expect_gt</span>(<span class="fu">max</span>(PCAout<span class="sc">$</span><span class="st">`</span><span class="at">Null Phi</span><span class="st">`</span>),PCAout<span class="sc">$</span><span class="st">`</span><span class="at">Empirical Phi</span><span class="st">`</span>)</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  })</span></code></pre></div>
-<pre><code>## Test passed 😀</code></pre>
+<pre><code>## Test passed 🥇</code></pre>
 </div>
 <div id="pca-of-two-fully-correlated-variables-has-only-pc1-significant" class="section level2">
 <h2>PCA of two fully-correlated variables has only PC1 significant</h2>
@@ -192,11 +192,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 100 bootstrap replicates, 100 random permutations
 ## ========================================================
 ## 
-## Empirical Psi = 2.0000, Max null Psi = 0.1451, Min null Psi = 0.0000, p-value = 0
-## Empirical Phi = 1.0000, Max null Phi = 0.2693, Min null Phi = 5e-04, p-value = 0
+## Empirical Psi = 2.0000, Max null Psi = 0.1050, Min null Psi = 0.0000, p-value = 0
+## Empirical Phi = 1.0000, Max null Phi = 0.2291, Min null Phi = 9e-04, p-value = 0
 ## 
-## Empirical eigenvalue #1 = 2, Max null eigenvalue = 1.26931, p-value = 0
-## Empirical eigenvalue #2 = 0, Max null eigenvalue = 0.99952, p-value = 1
+## Empirical eigenvalue #1 = 2, Max null eigenvalue = 1.22913, p-value = 0
+## Empirical eigenvalue #2 = 0, Max null eigenvalue = 0.99908, p-value = 1
 ## 
 ## PC 1 is significant and accounts for 100% (95%-CI:100-100) of the total variation</code></pre>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">test_that</span>(<span class="st">&quot;PCA of two fully-correlated variables has Psi=2, Phi=1,</span></span>
