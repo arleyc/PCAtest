@@ -1,0 +1,21 @@
+library(testthat)
+library(PCAtest)
+
+data("ex0")
+PCAout<-PCAtest(ex0, 100, 100, 0.05, indload=F, varcorr=FALSE, counter=F, plot=F)
+test_that("PCA of uncorrelated variables is not significant",{
+    expect_gt(max(PCAout$`Null Psi`),PCAout$`Empirical Psi`)
+    expect_gt(max(PCAout$`Null Phi`),PCAout$`Empirical Phi`)
+  })
+
+v1<-seq(0,1,0.01)
+v2<-seq(0,1,0.01)
+x<-cbind(v1,v2)
+PCAout<-PCAtest(x, 100, 100, 0.05, indload=F, varcorr=FALSE, counter=F, plot=F)
+test_that("PCA of two fully-correlated variables has Psi=2, Phi=1,
+  and only PC1 is significant",{
+  expect_equal(PCAout$`Empirical Psi`,2.0000)
+  expect_equal(PCAout$`Empirical Phi`,1.0000)
+  expect_equal(PCAout$`Percentage of variation of empirical PC's`[1],100)
+})
+

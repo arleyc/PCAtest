@@ -1,8 +1,0 @@
-library(testthat)
-library(PCAtest)
-v1<-seq(0,1,0.01)
-v2<-seq(0,1,0.01)
-x<-cbind(v1,v2)
-PCAout<-PCAtest(x, 100, 100, 0.05, varcorr=FALSE, plot=TRUE)
-expect_equal(PCAout$`Empirical Psi`,2.0000)
-expect_equal(PCAout$`Empirical Phi`,1.0000)
