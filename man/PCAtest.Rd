@@ -4,7 +4,16 @@
 \alias{PCAtest}
 \title{PCAtest: Statistical Significance of PCA}
 \usage{
-PCAtest(x, nperm = 1000, nboot = 1000, alpha = 0.05, corr = F, plot = T)
+PCAtest(
+  x,
+  nperm = 1000,
+  nboot = 1000,
+  alpha = 0.05,
+  indload = T,
+  varcorr = F,
+  counter = T,
+  plot = T
+)
 }
 \arguments{
 \item{x}{A matrix or dataframe with variables in the columns and the observations in the rows.}
@@ -15,7 +24,11 @@ PCAtest(x, nperm = 1000, nboot = 1000, alpha = 0.05, corr = F, plot = T)
 
 \item{alpha}{Nominal alpha level for statistical tests.}
 
-\item{corr}{A logical indicating whether to calculate the correlations of the variables with the significant PCs.}
+\item{indload}{A logical indicating whether to calculate the index loadings of the variables with the significant PCs.}
+
+\item{varcorr}{A logical indicating whether to calculate the correlations of the variables with the significant PCs.}
+
+\item{counter}{A logical specifying whether to show the progress of the random sampling (bootstrap and permutations) on the screen.}
 
 \item{plot}{A logical specifying whether to plot the null distributions, observed statistics, and 95\%-confidence intervals of statistics based on random permutation and bootstrap resampling.}
 }
@@ -42,11 +55,11 @@ An object of class “list” with the following elements:
 
 \item{indexloadperm}{The index of the loadings of the permuted data.}
 
-\item{corobs}{If corr=TRUE, the correlations of the observed variables with each significant PC.}
+\item{corobs}{If varcorr=TRUE, the correlations of the observed variables with each significant PC.}
 
-\item{corboot}{If corr=TRUE, the correlations of the observed variables with each significant PC based on the bootstrapped data.}
+\item{corboot}{If varcorr=TRUE, the correlations of the observed variables with each significant PC based on the bootstrapped data.}
 
-\item{corperm}{If corr=TRUE, the correlations of the observed variables with each significant PC based on permuted data.}
+\item{corperm}{If varcorr=TRUE, the correlations of the observed variables with each significant PC based on permuted data.}
 }
 }
 \description{
@@ -68,22 +81,22 @@ PCAtest uses the function stats::prcomp to run a PCA using the arguments scale =
 \examples{
 #PCA analysis of five uncorrelated variables
 data("ex0")
-result<-PCAtest(ex0, 100, 100, 0.05, corr=FALSE, plot=TRUE)
+result<-PCAtest(ex0, 100, 100, 0.05, varcorr=FALSE, plot=TRUE)
 
 #PCA analysis of five correlated (r=0.5) variables
 data("ex05")
-result<-PCAtest(ex05, 100, 100, 0.05, corr=FALSE, plot=TRUE)
+result<-PCAtest(ex05, 100, 100, 0.05, varcorr=FALSE, plot=TRUE)
 
 #PCA analysis of five correlated (r=1) variables
 v1<-seq(0,1,0.01)
 v5=v4=v3=v2=v1
 ex1<-cbind(v1,v2,v3,v4,v5)
-result<-PCAtest(ex1, 100, 100, 0.05, corr=FALSE, plot=TRUE)
+result<-PCAtest(ex1, 100, 100, 0.05, varcorr=FALSE, plot=TRUE)
 
 #PCA analysis of seven morphological variables from 29 ant species (from
 #Wong and Carmona 2021, https://doi.org/10.1111/2041-210X.13568)
 data("ants")
-result<-PCAtest(ants, 100, 100, 0.05, corr=FALSE, plot=TRUE)
+result<-PCAtest(ants, 100, 100, 0.05, varcorr=FALSE, plot=TRUE)
 }
 \references{
 \itemize{

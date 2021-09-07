@@ -16,7 +16,9 @@
 #' @param nperm Number of random permutations to build null distributions of the statistics.
 #' @param nboot Number of bootstrap replicates to build 95%-confidence intervals of the observed statistics.
 #' @param alpha Nominal alpha level for statistical tests.
-#' @param corr A logical indicating whether to calculate the correlations of the variables with the significant PCs.
+#' @param indload A logical indicating whether to calculate the index loadings of the variables with the significant PCs.
+#' @param varcorr A logical indicating whether to calculate the correlations of the variables with the significant PCs.
+#' @param counter A logical specifying whether to show the progress of the random sampling (bootstrap and permutations) on the screen.
 #' @param plot A logical specifying whether to plot the null distributions, observed statistics, and 95%-confidence intervals of statistics based on random permutation and bootstrap resampling.
 #'
 #' @details
@@ -45,11 +47,11 @@
 #'
 #'   \item{indexloadperm}{The index of the loadings of the permuted data.}
 #'
-#'   \item{corobs}{If corr=TRUE, the correlations of the observed variables with each significant PC.}
+#'   \item{corobs}{If varcorr=TRUE, the correlations of the observed variables with each significant PC.}
 #'
-#'   \item{corboot}{If corr=TRUE, the correlations of the observed variables with each significant PC based on the bootstrapped data.}
+#'   \item{corboot}{If varcorr=TRUE, the correlations of the observed variables with each significant PC based on the bootstrapped data.}
 #'
-#'   \item{corperm}{If corr=TRUE, the correlations of the observed variables with each significant PC based on permuted data.}
+#'   \item{corperm}{If varcorr=TRUE, the correlations of the observed variables with each significant PC based on permuted data.}
 #'}
 #'
 #' @author
@@ -69,24 +71,24 @@
 #' @examples
 #'#PCA analysis of five uncorrelated variables
 #'data("ex0")
-#'result<-PCAtest(ex0, 100, 100, 0.05, corr=FALSE, plot=TRUE)
+#'result<-PCAtest(ex0, 100, 100, 0.05, varcorr=FALSE, plot=TRUE)
 #'
 #'#PCA analysis of five correlated (r=0.5) variables
 #'data("ex05")
-#'result<-PCAtest(ex05, 100, 100, 0.05, corr=FALSE, plot=TRUE)
+#'result<-PCAtest(ex05, 100, 100, 0.05, varcorr=FALSE, plot=TRUE)
 #'
 #'#PCA analysis of five correlated (r=1) variables
 #'v1<-seq(0,1,0.01)
 #'v5=v4=v3=v2=v1
 #'ex1<-cbind(v1,v2,v3,v4,v5)
-#'result<-PCAtest(ex1, 100, 100, 0.05, corr=FALSE, plot=TRUE)
+#'result<-PCAtest(ex1, 100, 100, 0.05, varcorr=FALSE, plot=TRUE)
 #'
 #'#PCA analysis of seven morphological variables from 29 ant species (from
 #'#Wong and Carmona 2021, https://doi.org/10.1111/2041-210X.13568)
 #'data("ants")
-#'result<-PCAtest(ants, 100, 100, 0.05, corr=FALSE, plot=TRUE)
+#'result<-PCAtest(ants, 100, 100, 0.05, varcorr=FALSE, plot=TRUE)
 
-PCAtest <- function(x, nperm=1000, nboot=1000, alpha=0.05, corr=F, plot=T) {
+PCAtest <- function(x, nperm=1000, nboot=1000, alpha=0.05, indload=T, varcorr=F, counter=T, plot=T) {
 
 # check dependencies
 
@@ -116,7 +118,7 @@ for (i in 1:length(eigenvalues)) {
 
 # empirical correlations
 
-if (corr==T) {
+if (varcorr==T) {
 	corobs<-c()
 	for (i in 1:length(eigenvalues)) {
 		corobs <- rbind(corobs, pcaemp$rotation[,i] * sqrt(eigenvalues[i]))
@@ -151,14 +153,14 @@ pervarboot<-c()
 indexloadboot<-vector("list", nboot)
 corboot<-vector("list", nboot)
 
-cat("\rSampling bootstrap replicates... Please wait\r")
-#utils::flush.console()
+cat("\nSampling bootstrap replicates... Please wait\n")
 
 for (i in 1:nboot) {
 
-	pb <- utils::txtProgressBar(min = 0, max = nboot, style = 3, width = 50, char = "=")
-	#cat("\r",i, "of", nboot, "bootstrap replicates\r")
-	#utils::flush.console()
+	if (counter==T) {
+		cat("\r",i, "of", nboot, "bootstrap replicates\r")
+		utils::flush.console()
+	}
 
 	bootdata <- x[sample(nrow(x),size=dim(x)[1],replace=TRUE),]
 	pcaboot <- stats::prcomp(bootdata, scale=T, center=T)
@@ -170,14 +172,15 @@ for (i in 1:nboot) {
 
 	pervarboot <- rbind(pervarboot,eigenvalues / sum(eigenvalues) * 100)
 
-	indexload<-c()
-	for (j in 1:length(eigenvalues)) {
-		indexload <- rbind(indexload, pcaboot$rotation[,j]^2 * eigenvalues[j]^2)
-		}
+	if (indload==T) {
+		indexload<-c()
+		for (j in 1:length(eigenvalues)) {
+			indexload <- rbind(indexload, pcaboot$rotation[,j]^2 * eigenvalues[j]^2)
+			}
+		indexloadboot [[i]]<- indexload
+	}
 
-	indexloadboot [[i]]<- indexload
-
-	if (corr==T) {
+	if (varcorr==T) {
 		corload<-c()
 		for (j in 1:length(eigenvalues)) {
 			corload <- rbind(corload, pcaboot$rotation[,j] * sqrt(eigenvalues[j]))
@@ -185,28 +188,26 @@ for (i in 1:nboot) {
 
 		corboot [[i]]<- corload
 	}
-	utils::setTxtProgressBar(pb, i)
 }
 
-close(pb)
-
-cat("\rCalculating confidence intervals of empirical statistics... Please wait\r")
-#utils::flush.console()
+cat("\nCalculating confidence intervals of empirical statistics... Please wait\n")
 
 confint <- apply(pervarboot,MARGIN=2,FUN=stats::quantile, probs=c(0.025,0.975)) # confidence intervals of percentage of variation
 
-confintindboot<-c() # confidence intervals of index loadings
-for (j in 1:length(eigenvalues)) {
-	for (k in 1:dim(x)[2]) {
-		indices<-c()
-		for (i in 1:nboot) {
-			indices <- c(indices, indexloadboot[[i]][j,k])
+if (indload==T) {
+	confintindboot<-c() # confidence intervals of index loadings
+	for (j in 1:length(eigenvalues)) {
+		for (k in 1:dim(x)[2]) {
+			indices<-c()
+			for (i in 1:nboot) {
+				indices <- c(indices, indexloadboot[[i]][j,k])
+				}
+			confintindboot<- rbind (confintindboot, stats::quantile (indices, probs=c(0.025,0.975)))
 			}
-		confintindboot<- rbind (confintindboot, stats::quantile (indices, probs=c(0.025,0.975)))
 		}
-	}
+}
 
-if (corr==T) {
+if (varcorr==T) {
 	confintcorboot<-c() # confidence intervals of correlations
 	for (j in 1:length(eigenvalues)) {
 		for (k in 1:dim(x)[2]) {
@@ -214,7 +215,7 @@ if (corr==T) {
 			for (i in 1:nboot) {
 				cors <- c(cors, corboot[[i]][j,k])
 			}
-			confintcorboot<- rbind (confintcorboot, stats::quantile (indices, probs=c(0.025,0.975)))
+			confintcorboot<- rbind (confintcorboot, stats::quantile (cors, probs=c(0.025,0.975)))
 		}
 	}
 }
@@ -229,14 +230,14 @@ pervarperm<-c()
 indexloadperm<-vector("list", nperm)
 corperm<-vector("list", nperm)
 
-cat("\rSampling random permutations... Please wait\r")
+cat("\nSampling random permutations... Please wait\n")
 
 for (i in 1:nperm) {
 
-	pb <- utils::txtProgressBar(min = 0, max = nperm, style = 3, width = 50, char = "=")
-	
-	#cat("\r", i, "of", nperm, "random permutations                                                 \r")
-    #utils::flush.console()
+	if (counter==T) {
+		cat("\r", i, "of", nperm, "random permutations                                                 \r")
+    	utils::flush.console()
+    }
 
 	repvalue<-0
 	perm<-apply(x,MARGIN=2,FUN=sample)
@@ -265,14 +266,15 @@ for (i in 1:nperm) {
 
 	eigenrand <- rbind (eigenrand, eigenvalues)
 
-	indexload<-c()
-	for (j in 1:length(eigenvalues)) {
-		indexload <- rbind(indexload, pcaperm$rotation[,j]^2 * eigenvalues[j]^2)
-		}
+	if (indload==T) {
+		indexload<-c()
+		for (j in 1:length(eigenvalues)) {
+			indexload <- rbind(indexload, pcaperm$rotation[,j]^2 * eigenvalues[j]^2)
+			}
+		indexloadperm [[i]]<- indexload
+	}
 
-	indexloadperm [[i]]<- indexload
-
-	if (corr==T) {
+	if (varcorr==T) {
 		cor<-c()
 		for (j in 1:length(eigenvalues)) {
 			cor <- rbind(cor, pcaperm$rotation[,j] * sqrt(eigenvalues[j]))
@@ -280,40 +282,38 @@ for (i in 1:nperm) {
 
 		corperm [[i]]<- cor
 	}
-	utils::setTxtProgressBar(pb, i)
 }
 
-close(pb)
-
-cat("\rComparing empirical statistics with their null distributions... Please wait\r")
-#utils::flush.console()
+cat("\nComparing empirical statistics with their null distributions... Please wait\n")
 
 confintperm <- apply (pervarperm, MARGIN=2, FUN=stats::quantile, probs=c(0.025,0.975))
 
-confintind<-c()
-meanind<-c()
-for (j in 1:length(eigenvalues)) {
-	for (k in 1:dim(x)[2]) {
-		indices<-c()
-		for (i in 1:nperm) {
-			indices <- c(indices, indexloadperm[[i]][j,k])
+if (indload==T) {
+	confintind<-c()
+	meanind<-c()
+	for (j in 1:length(eigenvalues)) {
+		for (k in 1:dim(x)[2]) {
+			indices<-c()
+			for (i in 1:nperm) {
+				indices <- c(indices, indexloadperm[[i]][j,k])
 			}
-		confintind<- rbind (confintind, stats::quantile (indices, probs=c(0.025,0.975)))
-		meanind<- c(meanind, mean(indices))
+			confintind<- rbind (confintind, stats::quantile (indices, probs=c(0.025,0.975)))
+			meanind<- c(meanind, mean(indices))
 		}
 	}
+}
 
-if (corr==T) {
-confintcor<-c()
-meancor<-c()
-for (j in 1:length(eigenvalues)) {
-	for (k in 1:dim(x)[2]) {
-		cors<-c()
-		for (i in 1:nperm) {
-			cors <- c(cors, corperm[[i]][j,k])
+if (varcorr==T) {
+	confintcor<-c()
+	meancor<-c()
+	for (j in 1:length(eigenvalues)) {
+		for (k in 1:dim(x)[2]) {
+			cors<-c()
+			for (i in 1:nperm) {
+				cors <- c(cors, corperm[[i]][j,k])
 			}
-		confintcor<- rbind (confintcor, stats::quantile (cors, probs=c(0.025,0.975)))
-		meancor<- c(meancor, mean(cors))
+			confintcor<- rbind (confintcor, stats::quantile (cors, probs=c(0.025,0.975)))
+			meancor<- c(meancor, mean(cors))
 		}
 	}
 }
@@ -340,6 +340,7 @@ if (Psiprob < alpha & Phiprob < alpha) { # test PC axes if both Psi and Phi are 
 
 # find out which index loadings are significant for each significant axis
 
+if (indload==T) {
 	sigload <- list()
 
 	for (j in 1:sigaxes) {
@@ -349,11 +350,11 @@ if (Psiprob < alpha & Phiprob < alpha) { # test PC axes if both Psi and Phi are 
 		}
 		sigload [[j]]<- setdiff(c(1:dim(x)[2]), names(table(conteo)[table(conteo)/nperm > alpha]))
 	}
+}
 
 # find out which correlations are significant for each significant axis
 
-if (corr==T) {
-
+if (varcorr==T) {
 	sigcor <- list()
 
 	for (j in 1:sigaxes) {
@@ -362,8 +363,8 @@ if (corr==T) {
 			conteo <- c(conteo, which(corperm[[i]][j,] > corobs[j,]))
 		}
 		sigcor [[j]]<- setdiff(c(1:dim(x)[2]), names(table(conteo)[table(conteo)/nperm > alpha]))
-		}
 	}
+}
 }
 
 # screen output
@@ -397,13 +398,15 @@ if (Psiprob < alpha & Phiprob < alpha) { # test PC axes if both Psi and Phi are 
 		cat(paste ("\n", "The first ", sigaxes, " PC axes are significant and account for ", round(sum(pervarobs[1:sigaxes]), digits=1), "% of the total variation", sep=""))
 	}
 
+	if (indload==T) {
 	cat("\n")
 
 	for (i in 1:sigaxes) {
 		cat(paste("\n", "Variables ", paste(sigload[[i]][1:length(sigload[[i]])-1], collapse=", "), ", and ", paste(sigload[[i]][length(sigload[[i]])])," have significant loadings on PC ", i, sep=""))
 	}
+	}
 
-	if (corr==T) {
+	if (varcorr==T) {
 	cat("\n")
 
 	for (i in 1:sigaxes) {
@@ -445,7 +448,7 @@ if (Psiprob < alpha & Phiprob < alpha) { # test PC axes if both Psi and Phi are 
 	suppressWarnings(graphics::arrows (x0=c(1:length(eigenvalues)), y0=confintperm[2,], y1=confintperm[1,], code=3, angle=90, length=0.05, col="gray45"))
 
 # plot of bootstrapped and randomized index loadings for significant PC's only
-
+if (indload==T) {
 	k=1
 	for (i in 1:sigaxes) {
 
@@ -472,6 +475,7 @@ if (Psiprob < alpha & Phiprob < alpha) { # test PC axes if both Psi and Phi are 
 		}
 	}
 }
+}
 
 results <- list()
 
@@ -486,11 +490,13 @@ if (Psiprob < alpha & Phiprob < alpha) { # test PC axes if both Psi and Phi are 
 	results[["Percentage of variation of bootstrapped data"]] <- pervarboot
 	results[["Percentage of variation of randomized data"]] <- pervarperm
 
-	results[["Index loadings of empirical PC's"]] <- indexloadobs
-	results[["Index loadings with bootstrapped data"]] <- indexloadboot
-	results[["Index loadings with randomized data"]] <- indexloadperm
+	if (indload==T) {
+		results[["Index loadings of empirical PC's"]] <- indexloadobs
+		results[["Index loadings with bootstrapped data"]] <- indexloadboot
+		results[["Index loadings with randomized data"]] <- indexloadperm
+	}
 
-	if (corr==T) {
+	if (varcorr==T) {
 		results[["Correlations of empirical PC's with variables"]] <- corobs
 		results[["Correlations in bootstrapped data"]] <- corboot
 		results[["Correlations in randomized data"]] <- corperm

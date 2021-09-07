@@ -21,7 +21,6 @@ PCAtest uses a pair of statistics, Psi and Phi, based on the eigenvalues (roots)
 
 If the null hypothesis of a non significant PCA is rejected, PCAtest also calculates observed values and builds null distributions for two other statistics: the index of the loadings and the correlations of each PC with the variables in order to select the number of significant PCs, and the contribution of the observed variables to each significant PC.
 
-
 Overall significance of a PCA
 ---
 PCAtest should not reject the null hypothesis of a non-significant PCA, if there is no correlation structure among the variables. We can generate and analyze in PCAtest a set of uncorrelated variables:
@@ -29,25 +28,32 @@ PCAtest should not reject the null hypothesis of a non-significant PCA, if there
 ```{r, out.width="80%", out.height="80%",fig.width = 500/72, fig.height = 500/72, fig.retina=2, dpi=100}
 library(PCAtest)
 data("ex0")
-result<-PCAtest(ex0, 100, 100, 0.05, corr=FALSE, plot=TRUE)
+result<-PCAtest(ex0, 100, 100, 0.05, indload=FALSE, varcorr=FALSE, counter=FALSE, plot=TRUE)
 ```
-
-On the other hand, PCA should reject this hypothesis if there is some correlation among the variables. In this example, variables were generated with a correlation coefficient of 0.5:
-
-```{r, out.width="80%", out.height="80%",fig.width = 500/72, fig.height = 500/72, fig.retina=2, dpi=100}
-data("ex05")
-result<-PCAtest(ex05, 100, 100, 0.05, corr=FALSE, plot=TRUE)
-```
-
 
 Selecting the number of significant PCs
 ---
+If a PCA is significant, PCAtest uses random permutations to test which PC axes are significant based on random permutation and calculation of the percentage of total variation explained by each PC axis. We can use the published dataset from Wong & Carmona (2021, https://doi.org/10.1111/2041-210X.13568) consisting of seven morphological variables measured in 29 ant species:
+
 ```{r, out.width="80%", out.height="80%",fig.width = 500/72, fig.height = 500/72, fig.retina=2, dpi=100}
 data("ants")
-result<-PCAtest(ants
-                , 100, 100, 0.05, corr=FALSE, plot=TRUE)
+result<-PCAtest(ants, 100, 100, 0.05, indload=FALSE, varcorr=FALSE, counter=FALSE, plot=TRUE)
 ```
-
 
 Testing which variables have significant loadings
 ---
+In addition to selecting the number of significant PC axes, we are usually interested in finding out which variables have significant loadings on each significant PC axis. PCAtest runs random permutations and plots index loadings for all significant PCs:
+
+```{r, out.width="80%", out.height="80%",fig.width = 500/72, fig.height = 500/72, fig.retina=2, dpi=100}
+data("ants")
+result<-PCAtest(ants, 100, 100, 0.05, indload=TRUE, varcorr=FALSE, counter=FALSE, plot=TRUE)
+```
+
+Testing which variables have significant correlations
+---
+Instead of index loadings, we can choose to use variable correlations to evaluate their contributions to each significant PC axis:
+
+```{r, out.width="80%", out.height="80%",fig.width = 500/72, fig.height = 500/72, fig.retina=2, dpi=100}
+data("ants")
+result<-PCAtest(ants, 100, 100, 0.05, indload=FALSE, varcorr=TRUE, counter=FALSE, plot=FALSE)
+```
