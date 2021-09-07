@@ -1,6 +1,6 @@
 ---
 title: "Automated testing of PCAtest"
-output: github_document
+output: md_document
 ---
 
 ```{r setup, include=FALSE}
