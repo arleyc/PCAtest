@@ -156,7 +156,7 @@ cat("\rSampling bootstrap replicates... Please wait\r")
 
 for (i in 1:nboot) {
 
-	pb <- txtProgressBar(min = 0, max = nboot, style = 3, width = 50, char = "=")
+	pb <- utils::txtProgressBar(min = 0, max = nboot, style = 3, width = 50, char = "=")
 	#cat("\r",i, "of", nboot, "bootstrap replicates\r")
 	#utils::flush.console()
 
@@ -185,7 +185,7 @@ for (i in 1:nboot) {
 
 		corboot [[i]]<- corload
 	}
-	setTxtProgressBar(pb, i)
+	utils::setTxtProgressBar(pb, i)
 }
 
 close(pb)
@@ -233,7 +233,7 @@ cat("\rSampling random permutations... Please wait\r")
 
 for (i in 1:nperm) {
 
-	pb <- txtProgressBar(min = 0, max = nperm, style = 3, width = 50, char = "=")
+	pb <- utils::txtProgressBar(min = 0, max = nperm, style = 3, width = 50, char = "=")
 	
 	#cat("\r", i, "of", nperm, "random permutations                                                 \r")
     #utils::flush.console()
@@ -280,7 +280,7 @@ for (i in 1:nperm) {
 
 		corperm [[i]]<- cor
 	}
-	setTxtProgressBar(pb, i)
+	utils::setTxtProgressBar(pb, i)
 }
 
 close(pb)
