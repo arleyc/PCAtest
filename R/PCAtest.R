@@ -151,10 +151,14 @@ pervarboot<-c()
 indexloadboot<-vector("list", nboot)
 corboot<-vector("list", nboot)
 
+cat("\rSampling bootstrap replicates... Please wait\r")
+#utils::flush.console()
+
 for (i in 1:nboot) {
 
-	cat("\r",i, "of", nboot, "bootstrap replicates\r")
-	utils::flush.console()
+	pb <- txtProgressBar(min = 0, max = nboot, style = 3, width = 50, char = "=")
+	#cat("\r",i, "of", nboot, "bootstrap replicates\r")
+	#utils::flush.console()
 
 	bootdata <- x[sample(nrow(x),size=dim(x)[1],replace=TRUE),]
 	pcaboot <- stats::prcomp(bootdata, scale=T, center=T)
@@ -181,10 +185,13 @@ for (i in 1:nboot) {
 
 		corboot [[i]]<- corload
 	}
+	setTxtProgressBar(pb, i)
 }
 
+close(pb)
+
 cat("\rCalculating confidence intervals of empirical statistics... Please wait\r")
-utils::flush.console()
+#utils::flush.console()
 
 confint <- apply(pervarboot,MARGIN=2,FUN=stats::quantile, probs=c(0.025,0.975)) # confidence intervals of percentage of variation
 
@@ -222,10 +229,14 @@ pervarperm<-c()
 indexloadperm<-vector("list", nperm)
 corperm<-vector("list", nperm)
 
+cat("\rSampling random permutations... Please wait\r")
+
 for (i in 1:nperm) {
 
-	cat("\r", i, "of", nperm, "random permutations                                                 \r")
-    utils::flush.console()
+	pb <- txtProgressBar(min = 0, max = nperm, style = 3, width = 50, char = "=")
+	
+	#cat("\r", i, "of", nperm, "random permutations                                                 \r")
+    #utils::flush.console()
 
 	repvalue<-0
 	perm<-apply(x,MARGIN=2,FUN=sample)
@@ -269,10 +280,13 @@ for (i in 1:nperm) {
 
 		corperm [[i]]<- cor
 	}
+	setTxtProgressBar(pb, i)
 }
 
+close(pb)
+
 cat("\rComparing empirical statistics with their null distributions... Please wait\r")
-utils::flush.console()
+#utils::flush.console()
 
 confintperm <- apply (pervarperm, MARGIN=2, FUN=stats::quantile, probs=c(0.025,0.975))
 

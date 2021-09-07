@@ -36,7 +36,7 @@ On the other hand, PCA should reject this hypothesis if there is some correlatio
 
 ```{r, out.width="80%", out.height="80%",fig.width = 500/72, fig.height = 500/72, fig.retina=2, dpi=100}
 data("ex05")
-result<-PCAtest(ex0, 100, 100, 0.05, corr=FALSE, plot=TRUE)
+result<-PCAtest(ex05, 100, 100, 0.05, corr=FALSE, plot=TRUE)
 ```
 
 
@@ -44,7 +44,8 @@ Selecting the number of significant PCs
 ---
 ```{r, out.width="80%", out.height="80%",fig.width = 500/72, fig.height = 500/72, fig.retina=2, dpi=100}
 data("ants")
-result<-PCAtest(ex0, 100, 100, 0.05, corr=FALSE, plot=TRUE)
+result<-PCAtest(ants
+                , 100, 100, 0.05, corr=FALSE, plot=TRUE)
 ```
 
 
