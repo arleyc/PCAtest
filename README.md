@@ -52,8 +52,8 @@ result<-PCAtest(ex0, 100, 100, 0.05, varcorr=FALSE, counter=FALSE, plot=TRUE)
 #> 100 bootstrap replicates, 100 random permutations
 #> ========================================================
 #> 
-#> Empirical Psi = 0.1691, Max null Psi = 0.5347, Min null Psi = 0.0630, p-value = 0.6
-#> Empirical Phi = 0.0920, Max null Phi = 0.1635, Min null Phi = 0.0561, p-value = 0.6
+#> Empirical Psi = 0.1691, Max null Psi = 0.5500, Min null Psi = 0.0538, p-value = 0.58
+#> Empirical Phi = 0.0920, Max null Phi = 0.1658, Min null Phi = 0.0519, p-value = 0.58
 #> 
 #> PCA is not significant!
 ```
@@ -78,16 +78,16 @@ result<-PCAtest(ex05, 100, 100, 0.05, varcorr=FALSE, counter=FALSE, plot=TRUE)
 #> 100 bootstrap replicates, 100 random permutations
 #> ========================================================
 #> 
-#> Empirical Psi = 5.4655, Max null Psi = 0.4956, Min null Psi = 0.0441, p-value = 0
-#> Empirical Phi = 0.5228, Max null Phi = 0.1574, Min null Phi = 0.0469, p-value = 0
+#> Empirical Psi = 5.4655, Max null Psi = 0.4907, Min null Psi = 0.0352, p-value = 0
+#> Empirical Phi = 0.5228, Max null Phi = 0.1566, Min null Phi = 0.0420, p-value = 0
 #> 
-#> Empirical eigenvalue #1 = 3.08098, Max null eigenvalue = 1.51983, p-value = 0
-#> Empirical eigenvalue #2 = 0.63526, Max null eigenvalue = 1.25427, p-value = 1
-#> Empirical eigenvalue #3 = 0.52603, Max null eigenvalue = 1.08935, p-value = 1
-#> Empirical eigenvalue #4 = 0.43234, Max null eigenvalue = 0.98764, p-value = 1
-#> Empirical eigenvalue #5 = 0.3254, Max null eigenvalue = 0.85056, p-value = 1
+#> Empirical eigenvalue #1 = 3.08098, Max null eigenvalue = 1.55398, p-value = 0
+#> Empirical eigenvalue #2 = 0.63526, Max null eigenvalue = 1.28982, p-value = 1
+#> Empirical eigenvalue #3 = 0.52603, Max null eigenvalue = 1.07691, p-value = 1
+#> Empirical eigenvalue #4 = 0.43234, Max null eigenvalue = 0.96972, p-value = 1
+#> Empirical eigenvalue #5 = 0.3254, Max null eigenvalue = 0.88768, p-value = 1
 #> 
-#> PC 1 is significant and accounts for 61.6% (95%-CI:52.7-67.4) of the total variation
+#> PC 1 is significant and accounts for 61.6% (95%-CI:54.5-67.1) of the total variation
 #> 
 #> Variables 1, 2, 3, 4, and 5 have significant loadings on PC 1
 ```
@@ -114,14 +114,14 @@ result<-PCAtest(ex1, 100, 100, 0.05, varcorr=FALSE, counter=FALSE, plot=TRUE)
 #> 100 bootstrap replicates, 100 random permutations
 #> ========================================================
 #> 
-#> Empirical Psi = 20.0000, Max null Psi = 0.4525, Min null Psi = 0.0513, p-value = 0
-#> Empirical Phi = 1.0000, Max null Phi = 0.1504, Min null Phi = 0.0506, p-value = 0
+#> Empirical Psi = 20.0000, Max null Psi = 0.4631, Min null Psi = 0.0375, p-value = 0
+#> Empirical Phi = 1.0000, Max null Phi = 0.1522, Min null Phi = 0.0433, p-value = 0
 #> 
-#> Empirical eigenvalue #1 = 5, Max null eigenvalue = 1.48968, p-value = 0
-#> Empirical eigenvalue #2 = 0, Max null eigenvalue = 1.25735, p-value = 1
-#> Empirical eigenvalue #3 = 0, Max null eigenvalue = 1.17795, p-value = 1
-#> Empirical eigenvalue #4 = 0, Max null eigenvalue = 0.98904, p-value = 1
-#> Empirical eigenvalue #5 = 0, Max null eigenvalue = 0.86141, p-value = 1
+#> Empirical eigenvalue #1 = 5, Max null eigenvalue = 1.52565, p-value = 0
+#> Empirical eigenvalue #2 = 0, Max null eigenvalue = 1.29655, p-value = 1
+#> Empirical eigenvalue #3 = 0, Max null eigenvalue = 1.08443, p-value = 1
+#> Empirical eigenvalue #4 = 0, Max null eigenvalue = 0.99852, p-value = 1
+#> Empirical eigenvalue #5 = 0, Max null eigenvalue = 0.85708, p-value = 1
 #> 
 #> PC 1 is significant and accounts for 100% (95%-CI:100-100) of the total variation
 #> 
@@ -149,18 +149,18 @@ result<-PCAtest(ants, 100, 100, 0.05, varcorr=FALSE, counter=FALSE, plot=TRUE)
 #> 100 bootstrap replicates, 100 random permutations
 #> ========================================================
 #> 
-#> Empirical Psi = 10.9186, Max null Psi = 2.9045, Min null Psi = 0.5911, p-value = 0
-#> Empirical Phi = 0.5099, Max null Phi = 0.2630, Min null Phi = 0.1186, p-value = 0
+#> Empirical Psi = 10.9186, Max null Psi = 3.1379, Min null Psi = 0.5491, p-value = 0
+#> Empirical Phi = 0.5099, Max null Phi = 0.2733, Min null Phi = 0.1143, p-value = 0
 #> 
-#> Empirical eigenvalue #1 = 3.84712, Max null eigenvalue = 2.28859, p-value = 0
-#> Empirical eigenvalue #2 = 1.52017, Max null eigenvalue = 1.66739, p-value = 0.18
-#> Empirical eigenvalue #3 = 0.70634, Max null eigenvalue = 1.35956, p-value = 1
-#> Empirical eigenvalue #4 = 0.41356, Max null eigenvalue = 1.12948, p-value = 1
-#> Empirical eigenvalue #5 = 0.34001, Max null eigenvalue = 0.96167, p-value = 1
-#> Empirical eigenvalue #6 = 0.14515, Max null eigenvalue = 0.77968, p-value = 1
-#> Empirical eigenvalue #7 = 0.02765, Max null eigenvalue = 0.5889, p-value = 1
+#> Empirical eigenvalue #1 = 3.84712, Max null eigenvalue = 2.42375, p-value = 0
+#> Empirical eigenvalue #2 = 1.52017, Max null eigenvalue = 1.69682, p-value = 0.15
+#> Empirical eigenvalue #3 = 0.70634, Max null eigenvalue = 1.39666, p-value = 1
+#> Empirical eigenvalue #4 = 0.41356, Max null eigenvalue = 1.1099, p-value = 1
+#> Empirical eigenvalue #5 = 0.34001, Max null eigenvalue = 0.91841, p-value = 1
+#> Empirical eigenvalue #6 = 0.14515, Max null eigenvalue = 0.7221, p-value = 1
+#> Empirical eigenvalue #7 = 0.02765, Max null eigenvalue = 0.64705, p-value = 1
 #> 
-#> PC 1 is significant and accounts for 55% (95%-CI:43.9-65.3) of the total variation
+#> PC 1 is significant and accounts for 55% (95%-CI:42.3-63.6) of the total variation
 #> 
 #> Variables 1, 2, 3, 4, 5, and 7 have significant loadings on PC 1
 ```
@@ -171,3 +171,18 @@ result<-PCAtest(ants, 100, 100, 0.05, varcorr=FALSE, counter=FALSE, plot=TRUE)
 
 [Unit testing with testthat
 (https://testthat.r-lib.org/)](tests/testthat/testthat.md)
+
+## References
+
+Gleason, T. C. and Staelin R. (1975) A proposal for handling missing
+data. Psychometrika, 40, 229–252. Jackson, J. E. (1991) A User’s Guide
+to Principal Components. John Wiley & Sons, New York, USA. Ringnér, M.
+(2008) What is principal component analysis? Nature Biotechnology, 26,
+303–304. item ter Braak, C. F. J. (1990) Update notes: CANOCO (version
+3.1). Agricultural Mattematic Group, Report LWA-88-02, Wagningen,
+Netherlands. Vieira, V. M. N. C. S. (2012) Permutation tests to estimate
+significances on Principal Components Analysis. Computational Ecology
+and Software, 2, 103–123. Wong, M. K. L. and Carmona, C. P. (2021)
+Including intraspecific trait variability to avoid distortion of
+functional diversity and ecological inference: Lessons from natural
+assemblages. Methods in Ecology and Evolution. .
