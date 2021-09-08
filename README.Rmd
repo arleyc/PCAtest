@@ -70,3 +70,5 @@ data("ants")
 result<-PCAtest(ants, 100, 100, 0.05, varcorr=FALSE, counter=FALSE, plot=TRUE)
 ```
 
+## Testing
+[Automated testing with testthat:](tests/testthat/testhat.md)
