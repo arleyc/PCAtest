@@ -88,7 +88,8 @@
 #'data("ants")
 #'result<-PCAtest(ants, 100, 100, 0.05, varcorr=FALSE, counter=FALSE, plot=TRUE)
 
-PCAtest <- function(x, nperm=1000, nboot=1000, alpha=0.05, indload=T, varcorr=F, counter=T, plot=T) {
+PCAtest <- function(x, nperm=1000, nboot=1000, alpha=0.05, indload=TRUE, varcorr
+                    =FALSE, counter=TRUE, plot=TRUE) {
 
 # check dependencies
 
@@ -146,8 +147,8 @@ for (i in 1:length(eigenvalues)) {
 Phi <- sqrt((Phi - dim(x)[2]) / (dim(x)[2] * (dim(x)[2]-1)))
 Phiobs <- Phi
 
-# bootstraped data for confidence intervals of empirical eigenvalues, index loadings, and
-# correlations
+# bootstraped data for confidence intervals of empirical eigenvalues, index loadings,
+# and correlations
 
 pervarboot<-c()
 indexloadboot<-vector("list", nboot)
@@ -192,7 +193,8 @@ for (i in 1:nboot) {
 
 cat("\nCalculating confidence intervals of empirical statistics... Please wait\n")
 
-confint <- apply(pervarboot,MARGIN=2,FUN=stats::quantile, probs=c(0.025,0.975)) # confidence intervals of percentage of variation
+# confidence intervals of percentage of variation
+confint <- apply(pervarboot,MARGIN=2,FUN=stats::quantile, probs=c(0.025,0.975))
 
 if (indload==T) {
 	confintindboot<-c() # confidence intervals of index loadings
@@ -220,7 +222,8 @@ if (varcorr==T) {
 	}
 }
 
-# null distributions based on randomizations of Psi, Phi, eigenvalues, percentage of variation, and index loadings
+# null distributions based on randomizations of Psi, Phi, eigenvalues, percentage of variation,
+# and index loadings
 
 Psi<-c()
 Phi<-c()
@@ -318,7 +321,8 @@ if (varcorr==T) {
 	}
 }
 
-# comparing empirical Psi, Phi and eigenvalues with their null distributions to calculate p-values
+# comparing empirical Psi, Phi and eigenvalues with their null distributions to calculate
+# p-values
 
 Psiprob <- length (which (Psi>Psiobs)) / nperm
 Phiprob <- length (which (Phi>Phiobs)) / nperm

@@ -9,10 +9,10 @@ PCAtest(
   nperm = 1000,
   nboot = 1000,
   alpha = 0.05,
-  indload = T,
-  varcorr = F,
-  counter = T,
-  plot = T
+  indload = TRUE,
+  varcorr = FALSE,
+  counter = TRUE,
+  plot = TRUE
 )
 }
 \arguments{
