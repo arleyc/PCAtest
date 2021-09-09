@@ -2,7 +2,7 @@
 title: "PCAtest: Statistical significance of PCA"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Basic usage of PCAtest}
+  %\VignetteIndexEntry{PCAtest: Statistical significance of PCA}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
