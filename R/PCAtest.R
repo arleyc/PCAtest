@@ -73,15 +73,13 @@
 #'data("ex0")
 #'result<-PCAtest(ex0, 100, 100, 0.05, varcorr=FALSE, counter=FALSE, plot=TRUE)
 #'
+#'#PCA analysis of five correlated (r=0.25) variables
+#'data("ex025")
+#'result<-PCAtest(ex025, 100, 100, 0.05, varcorr=FALSE, counter=FALSE, plot=TRUE)
+#'
 #'#PCA analysis of five correlated (r=0.5) variables
 #'data("ex05")
 #'result<-PCAtest(ex05, 100, 100, 0.05, varcorr=FALSE, counter=FALSE, plot=TRUE)
-#'
-#'#PCA analysis of five correlated (r=1) variables
-#'v1<-seq(0,1,0.01)
-#'v5=v4=v3=v2=v1
-#'ex1<-cbind(v1,v2,v3,v4,v5)
-#'result<-PCAtest(ex1, 100, 100, 0.05, varcorr=FALSE, counter=FALSE, plot=TRUE)
 #'
 #'#PCA analysis of seven morphological variables from 29 ant species (from
 #'#Wong and Carmona 2021, https://doi.org/10.1111/2041-210X.13568)
