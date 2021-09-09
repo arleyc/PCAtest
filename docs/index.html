@@ -110,12 +110,43 @@
 <span class="co">#&gt; 100 bootstrap replicates, 100 random permutations</span>
 <span class="co">#&gt; ========================================================</span>
 <span class="co">#&gt; </span>
-<span class="co">#&gt; Empirical Psi = 0.1691, Max null Psi = 0.5347, Min null Psi = 0.0630, p-value = 0.6</span>
-<span class="co">#&gt; Empirical Phi = 0.0920, Max null Phi = 0.1635, Min null Phi = 0.0561, p-value = 0.6</span>
+<span class="co">#&gt; Empirical Psi = 0.1691, Max null Psi = 0.4296, Min null Psi = 0.0324, p-value = 0.59</span>
+<span class="co">#&gt; Empirical Phi = 0.0920, Max null Phi = 0.1466, Min null Phi = 0.0403, p-value = 0.59</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; PCA is not significant!</span></code></pre></div>
 <p><img src="reference/figures/README-example1-1.png" width="100%"></p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co">#PCA analysis of five correlated (r=0.25) variables</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"ex025"</span><span class="op">)</span>
+<span class="va">result</span><span class="op">&lt;-</span><span class="fu"><a href="reference/PCAtest.html">PCAtest</a></span><span class="op">(</span><span class="va">ex025</span>, <span class="fl">100</span>, <span class="fl">100</span>, <span class="fl">0.05</span>, varcorr<span class="op">=</span><span class="cn">FALSE</span>, counter<span class="op">=</span><span class="cn">FALSE</span>, plot<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Sampling bootstrap replicates... Please wait</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Calculating confidence intervals of empirical statistics... Please wait</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Sampling random permutations... Please wait</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Comparing empirical statistics with their null distributions... Please wait</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; ========================================================</span>
+<span class="co">#&gt; Test of PCA significance: 5 variables, 100 observations</span>
+<span class="co">#&gt; 100 bootstrap replicates, 100 random permutations</span>
+<span class="co">#&gt; ========================================================</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Empirical Psi = 1.1327, Max null Psi = 0.5166, Min null Psi = 0.0680, p-value = 0</span>
+<span class="co">#&gt; Empirical Phi = 0.2380, Max null Phi = 0.1607, Min null Phi = 0.0583, p-value = 0</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Empirical eigenvalue #1 = 1.88693, Max null eigenvalue = 1.57397, p-value = 0</span>
+<span class="co">#&gt; Empirical eigenvalue #2 = 1.01454, Max null eigenvalue = 1.22064, p-value = 0.99</span>
+<span class="co">#&gt; Empirical eigenvalue #3 = 0.8287, Max null eigenvalue = 1.13383, p-value = 1</span>
+<span class="co">#&gt; Empirical eigenvalue #4 = 0.79299, Max null eigenvalue = 0.98174, p-value = 0.94</span>
+<span class="co">#&gt; Empirical eigenvalue #5 = 0.47684, Max null eigenvalue = 0.85547, p-value = 1</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; PC 1 is significant and accounts for 37.7% (95%-CI:33.1-44.1) of the total variation</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Variables 2, and 3 have significant loadings on PC 1</span></code></pre></div>
+<p><img src="reference/figures/README-example2-1.png" width="100%"></p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">#PCA analysis of five correlated (r=0.5) variables</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"ex05"</span><span class="op">)</span>
 <span class="va">result</span><span class="op">&lt;-</span><span class="fu"><a href="reference/PCAtest.html">PCAtest</a></span><span class="op">(</span><span class="va">ex05</span>, <span class="fl">100</span>, <span class="fl">100</span>, <span class="fl">0.05</span>, varcorr<span class="op">=</span><span class="cn">FALSE</span>, counter<span class="op">=</span><span class="cn">FALSE</span>, plot<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span>
@@ -133,49 +164,16 @@
 <span class="co">#&gt; 100 bootstrap replicates, 100 random permutations</span>
 <span class="co">#&gt; ========================================================</span>
 <span class="co">#&gt; </span>
-<span class="co">#&gt; Empirical Psi = 5.4655, Max null Psi = 0.4956, Min null Psi = 0.0441, p-value = 0</span>
-<span class="co">#&gt; Empirical Phi = 0.5228, Max null Phi = 0.1574, Min null Phi = 0.0469, p-value = 0</span>
+<span class="co">#&gt; Empirical Psi = 5.4655, Max null Psi = 0.4920, Min null Psi = 0.0634, p-value = 0</span>
+<span class="co">#&gt; Empirical Phi = 0.5228, Max null Phi = 0.1568, Min null Phi = 0.0563, p-value = 0</span>
 <span class="co">#&gt; </span>
-<span class="co">#&gt; Empirical eigenvalue #1 = 3.08098, Max null eigenvalue = 1.51983, p-value = 0</span>
-<span class="co">#&gt; Empirical eigenvalue #2 = 0.63526, Max null eigenvalue = 1.25427, p-value = 1</span>
-<span class="co">#&gt; Empirical eigenvalue #3 = 0.52603, Max null eigenvalue = 1.08935, p-value = 1</span>
-<span class="co">#&gt; Empirical eigenvalue #4 = 0.43234, Max null eigenvalue = 0.98764, p-value = 1</span>
-<span class="co">#&gt; Empirical eigenvalue #5 = 0.3254, Max null eigenvalue = 0.85056, p-value = 1</span>
+<span class="co">#&gt; Empirical eigenvalue #1 = 3.08098, Max null eigenvalue = 1.55877, p-value = 0</span>
+<span class="co">#&gt; Empirical eigenvalue #2 = 0.63526, Max null eigenvalue = 1.23933, p-value = 1</span>
+<span class="co">#&gt; Empirical eigenvalue #3 = 0.52603, Max null eigenvalue = 1.12528, p-value = 1</span>
+<span class="co">#&gt; Empirical eigenvalue #4 = 0.43234, Max null eigenvalue = 0.97784, p-value = 1</span>
+<span class="co">#&gt; Empirical eigenvalue #5 = 0.3254, Max null eigenvalue = 0.84725, p-value = 1</span>
 <span class="co">#&gt; </span>
-<span class="co">#&gt; PC 1 is significant and accounts for 61.6% (95%-CI:52.7-67.4) of the total variation</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Variables 1, 2, 3, 4, and 5 have significant loadings on PC 1</span></code></pre></div>
-<p><img src="reference/figures/README-example2-1.png" width="100%"></p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co">#PCA analysis of five correlated (r=1) variables</span>
-<span class="va">v1</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">1</span>,<span class="fl">0.01</span><span class="op">)</span>
-<span class="va">v5</span><span class="op">=</span><span class="va">v4</span><span class="op">=</span><span class="va">v3</span><span class="op">=</span><span class="va">v2</span><span class="op">=</span><span class="va">v1</span>
-<span class="va">ex1</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span><span class="va">v1</span>,<span class="va">v2</span>,<span class="va">v3</span>,<span class="va">v4</span>,<span class="va">v5</span><span class="op">)</span>
-<span class="va">result</span><span class="op">&lt;-</span><span class="fu"><a href="reference/PCAtest.html">PCAtest</a></span><span class="op">(</span><span class="va">ex1</span>, <span class="fl">100</span>, <span class="fl">100</span>, <span class="fl">0.05</span>, varcorr<span class="op">=</span><span class="cn">FALSE</span>, counter<span class="op">=</span><span class="cn">FALSE</span>, plot<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Sampling bootstrap replicates... Please wait</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Calculating confidence intervals of empirical statistics... Please wait</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Sampling random permutations... Please wait</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Comparing empirical statistics with their null distributions... Please wait</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; ========================================================</span>
-<span class="co">#&gt; Test of PCA significance: 5 variables, 101 observations</span>
-<span class="co">#&gt; 100 bootstrap replicates, 100 random permutations</span>
-<span class="co">#&gt; ========================================================</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Empirical Psi = 20.0000, Max null Psi = 0.4525, Min null Psi = 0.0513, p-value = 0</span>
-<span class="co">#&gt; Empirical Phi = 1.0000, Max null Phi = 0.1504, Min null Phi = 0.0506, p-value = 0</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Empirical eigenvalue #1 = 5, Max null eigenvalue = 1.48968, p-value = 0</span>
-<span class="co">#&gt; Empirical eigenvalue #2 = 0, Max null eigenvalue = 1.25735, p-value = 1</span>
-<span class="co">#&gt; Empirical eigenvalue #3 = 0, Max null eigenvalue = 1.17795, p-value = 1</span>
-<span class="co">#&gt; Empirical eigenvalue #4 = 0, Max null eigenvalue = 0.98904, p-value = 1</span>
-<span class="co">#&gt; Empirical eigenvalue #5 = 0, Max null eigenvalue = 0.86141, p-value = 1</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; PC 1 is significant and accounts for 100% (95%-CI:100-100) of the total variation</span>
+<span class="co">#&gt; PC 1 is significant and accounts for 61.6% (95%-CI:54.3-68.3) of the total variation</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Variables 1, 2, 3, 4, and 5 have significant loadings on PC 1</span></code></pre></div>
 <p><img src="reference/figures/README-example3-1.png" width="100%"></p>
@@ -198,21 +196,30 @@
 <span class="co">#&gt; 100 bootstrap replicates, 100 random permutations</span>
 <span class="co">#&gt; ========================================================</span>
 <span class="co">#&gt; </span>
-<span class="co">#&gt; Empirical Psi = 10.9186, Max null Psi = 2.9045, Min null Psi = 0.5911, p-value = 0</span>
-<span class="co">#&gt; Empirical Phi = 0.5099, Max null Phi = 0.2630, Min null Phi = 0.1186, p-value = 0</span>
+<span class="co">#&gt; Empirical Psi = 10.9186, Max null Psi = 2.6890, Min null Psi = 0.4898, p-value = 0</span>
+<span class="co">#&gt; Empirical Phi = 0.5099, Max null Phi = 0.2530, Min null Phi = 0.1080, p-value = 0</span>
 <span class="co">#&gt; </span>
-<span class="co">#&gt; Empirical eigenvalue #1 = 3.84712, Max null eigenvalue = 2.28859, p-value = 0</span>
-<span class="co">#&gt; Empirical eigenvalue #2 = 1.52017, Max null eigenvalue = 1.66739, p-value = 0.18</span>
-<span class="co">#&gt; Empirical eigenvalue #3 = 0.70634, Max null eigenvalue = 1.35956, p-value = 1</span>
-<span class="co">#&gt; Empirical eigenvalue #4 = 0.41356, Max null eigenvalue = 1.12948, p-value = 1</span>
-<span class="co">#&gt; Empirical eigenvalue #5 = 0.34001, Max null eigenvalue = 0.96167, p-value = 1</span>
-<span class="co">#&gt; Empirical eigenvalue #6 = 0.14515, Max null eigenvalue = 0.77968, p-value = 1</span>
-<span class="co">#&gt; Empirical eigenvalue #7 = 0.02765, Max null eigenvalue = 0.5889, p-value = 1</span>
+<span class="co">#&gt; Empirical eigenvalue #1 = 3.84712, Max null eigenvalue = 2.21709, p-value = 0</span>
+<span class="co">#&gt; Empirical eigenvalue #2 = 1.52017, Max null eigenvalue = 1.88288, p-value = 0.15</span>
+<span class="co">#&gt; Empirical eigenvalue #3 = 0.70634, Max null eigenvalue = 1.39173, p-value = 1</span>
+<span class="co">#&gt; Empirical eigenvalue #4 = 0.41356, Max null eigenvalue = 1.15168, p-value = 1</span>
+<span class="co">#&gt; Empirical eigenvalue #5 = 0.34001, Max null eigenvalue = 1.00704, p-value = 1</span>
+<span class="co">#&gt; Empirical eigenvalue #6 = 0.14515, Max null eigenvalue = 0.7973, p-value = 1</span>
+<span class="co">#&gt; Empirical eigenvalue #7 = 0.02765, Max null eigenvalue = 0.5966, p-value = 1</span>
 <span class="co">#&gt; </span>
-<span class="co">#&gt; PC 1 is significant and accounts for 55% (95%-CI:43.9-65.3) of the total variation</span>
+<span class="co">#&gt; PC 1 is significant and accounts for 55% (95%-CI:43.8-64.4) of the total variation</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Variables 1, 2, 3, 4, 5, and 7 have significant loadings on PC 1</span></code></pre></div>
 <p><img src="reference/figures/README-example4-1.png" width="100%"></p>
+</div>
+<div id="references" class="section level2">
+<h2 class="hasAnchor">
+<a href="#references" class="anchor"></a>References</h2>
+<p>Gleason, T. C. and Staelin R. (1975) A proposal for handling missing data. Psychometrika, 40, 229–252.<br>
+Jackson, J. E. (1991) A User’s Guide to Principal Components. John Wiley &amp; Sons, New York, USA.<br>
+ter Braak, C. F. J. (1990) Update notes: CANOCO (version 3.1). Agricultural Mattematic Group, Report LWA-88-02, Wagningen, Netherlands.<br>
+Vieira, V. M. N. C. S. (2012) Permutation tests to estimate significances on Principal Components Analysis. Computational Ecology and Software, 2, 103–123.<br>
+Wong, M. K. L. and Carmona, C. P. (2021) Including intraspecific trait variability to avoid distortion of functional diversity and ecological inference: Lessons from natural assemblages. Methods in Ecology and Evolution. .</p>
 </div>
 </div>
   </div>
