@@ -15,7 +15,7 @@ knitr::opts_chunk$set(
 ```
 Introduction
 ---
-A PCA is meaningful and should only be applied if there is a significant correlation structure among at least some of the variables in a dataset. Due to sampling variance alone, it is possible that some level of random correlation structure could occur in the data. Therefore, it is necessary to evaluate if the observed correlation structure is higher than expected due to chance alone.
+A PCA is meaningful and should only be applied if there is a significant correlation structure among at least some of the variables in a dataset. Due to sampling variance alone, it is possible that some level of random correlation structure could occur in the data. Therefore, it is necessary to evaluate if the observed correlation structure is higher than expected due to chance alone. 
 
 PCAtest uses a pair of statistics, Psi and Phi, based on the eigenvalues (roots) of a PCA to evaluate its significance by comparing observed values with their null distributions. The expected values of Psi and Phi are calculated from random permutations of the observations within variables, which effectively removes any correlation structure among variables. If the observed statistics are not larger than the expected null distributions, PCA is meaningless and it should not be used.
 
