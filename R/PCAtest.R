@@ -73,7 +73,7 @@
 #' @examples
 #'#PCA analysis of five uncorrelated variables
 #'library(MASS)
-#'mu <- c(0,0,0,0,0)
+#'mu <- rep(0,5)
 #'Sigma <- matrix(c(rep(c(1,0,0,0,0,0),4),1),5)
 #'ex0 <- mvrnorm(100, mu = mu, Sigma = Sigma )
 #'result<-PCAtest(ex0, 100, 100, 0.05, varcorr=FALSE, counter=FALSE, plot=TRUE)
