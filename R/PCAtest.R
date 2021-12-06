@@ -71,7 +71,7 @@
 #' @export
 #'
 #' @examples
-#'#PCA analysis of five uncorrelated variables
+#'#PCA analysis of five uncorrelated (r=0) variables
 #'library(MASS)
 #'mu <- rep(0,5)
 #'Sigma <- matrix(c(rep(c(1,0,0,0,0,0),4),1),5)
