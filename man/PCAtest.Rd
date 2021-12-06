@@ -76,19 +76,26 @@ function also calculates the sampling variance around mean observed
 statistics based on bootstrap replicates.
 }
 \details{
-PCAtest uses the function stats::prcomp to run a PCA using the arguments scale = TRUE and center = TRUE. PCAtest plots four types of graphs in a single page: (1) a histogram showing the null distribution and the observed value of the Psi statistic, (2) a histogram showing the null distribution and the observed value of the Phi statistic, (3) a bar plot of the percentage of explained variance of each PC1, PC2, ..., etc., showing the sampling variance based on bootstrap replicates and random permutations with 95\%-confidence intervals, and (4) a bar plot of the index of the loadings of each observed variable for PC1, showing the sampling variance of bootstrap replicates and random permutations with 95\%- confidence intervals. If more than one PC is significant, additional plots for the index of the loadings are shown in as many new pages as necessary given the number of significant PCs. If the PCA is not significant, based on the Psi and Phi testing results, only histograms (1) and (2) are shown.
+PCAtest uses the function stats::prcomp to run a PCA using
+the arguments scale = TRUE and center = TRUE.
+PCAtest plots four types of graphs in a single page: (1) a histogram showing the null distribution and the observed value of the Psi statistic, (2) a histogram showing the null distribution and the observed value of the Phi statistic, (3) a bar plot of the percentage of explained variance of each PC1, PC2, ..., etc., showing the sampling variance based on bootstrap replicates and random permutations with 95\%-confidence intervals, and (4) a bar plot of the index of the loadings of each observed variable for PC1, showing the sampling variance of bootstrap replicates and random permutations with 95\%- confidence intervals. If more than one PC is significant, additional plots for the index of the loadings are shown in as many new pages as necessary given the number of significant PCs. If the PCA is not significant, based on the Psi and Phi testing results, only histograms (1) and (2) are shown.
 }
 \examples{
 #PCA analysis of five uncorrelated variables
-data("ex0")
+library(MASS)
+mu <- c(0,0,0,0,0)
+Sigma <- matrix(c(rep(c(1,0,0,0,0,0),4),1),5)
+ex0 <- mvrnorm(100, mu = mu, Sigma = Sigma )
 result<-PCAtest(ex0, 100, 100, 0.05, varcorr=FALSE, counter=FALSE, plot=TRUE)
 
 #PCA analysis of five correlated (r=0.25) variables
-data("ex025")
+Sigma <- matrix(c(rep(c(1,0.25,0.25,0.25,0.25,0.25),4),1),5)
+ex025 <- mvrnorm(100, mu = mu, Sigma = Sigma )
 result<-PCAtest(ex025, 100, 100, 0.05, varcorr=FALSE, counter=FALSE, plot=TRUE)
 
 #PCA analysis of five correlated (r=0.5) variables
-data("ex05")
+Sigma <- matrix(c(rep(c(1,0.5,0.5,0.5,0.5,0.5),4),1),5)
+ex05 <- mvrnorm(100, mu = mu, Sigma = Sigma )
 result<-PCAtest(ex05, 100, 100, 0.05, varcorr=FALSE, counter=FALSE, plot=TRUE)
 
 #PCA analysis of seven morphological variables from 29 ant species (from

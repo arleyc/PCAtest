@@ -27,7 +27,10 @@ PCAtest should not reject the null hypothesis of a non-significant PCA, if there
 
 ```{r, out.width="80%", out.height="80%",fig.width = 500/72, fig.height = 500/72, fig.retina=2, dpi=100}
 library(PCAtest)
-data("ex0")
+library(MASS)
+mu <- c(0,0,0,0,0)
+Sigma <- matrix(c(rep(c(1,0,0,0,0,0),4),1),5)
+ex0 <- mvrnorm(100, mu = mu, Sigma = Sigma )
 result<-PCAtest(ex0, 100, 100, 0.05, indload=FALSE, varcorr=FALSE, counter=FALSE, plot=TRUE)
 ```
 
