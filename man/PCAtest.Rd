@@ -81,7 +81,7 @@ the arguments scale = TRUE and center = TRUE.
 PCAtest plots four types of graphs in a single page: (1) a histogram showing the null distribution and the observed value of the Psi statistic, (2) a histogram showing the null distribution and the observed value of the Phi statistic, (3) a bar plot of the percentage of explained variance of each PC1, PC2, ..., etc., showing the sampling variance based on bootstrap replicates and random permutations with 95\%-confidence intervals, and (4) a bar plot of the index of the loadings of each observed variable for PC1, showing the sampling variance of bootstrap replicates and random permutations with 95\%- confidence intervals. If more than one PC is significant, additional plots for the index of the loadings are shown in as many new pages as necessary given the number of significant PCs. If the PCA is not significant, based on the Psi and Phi testing results, only histograms (1) and (2) are shown.
 }
 \examples{
-#PCA analysis of five uncorrelated variables
+#PCA analysis of five uncorrelated (r=0) variables
 library(MASS)
 mu <- rep(0,5)
 Sigma <- matrix(c(rep(c(1,0,0,0,0,0),4),1),5)
