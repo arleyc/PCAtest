@@ -36,7 +36,10 @@ devtools::install_github("arleyc/PCAtest")
 ``` r
 library(PCAtest)
 # PCA analysis of five uncorrelated variables
-data("ex0")
+library(MASS)
+mu <- c(0,0,0,0,0)
+Sigma <- matrix(c(rep(c(1,0,0,0,0,0),4),1),5)
+ex0 <- mvrnorm(100, mu = mu, Sigma = Sigma )
 result<-PCAtest(ex0, 100, 100, 0.05, varcorr=FALSE, counter=FALSE, plot=TRUE)
 #> 
 #> Sampling bootstrap replicates... Please wait
@@ -52,8 +55,8 @@ result<-PCAtest(ex0, 100, 100, 0.05, varcorr=FALSE, counter=FALSE, plot=TRUE)
 #> 100 bootstrap replicates, 100 random permutations
 #> ========================================================
 #> 
-#> Empirical Psi = 0.1691, Max null Psi = 0.4296, Min null Psi = 0.0324, p-value = 0.59
-#> Empirical Phi = 0.0920, Max null Phi = 0.1466, Min null Phi = 0.0403, p-value = 0.59
+#> Empirical Psi = 0.2299, Max null Psi = 0.5100, Min null Psi = 0.0372, p-value = 0.4
+#> Empirical Phi = 0.1072, Max null Phi = 0.1597, Min null Phi = 0.0431, p-value = 0.4
 #> 
 #> PCA is not significant!
 ```
@@ -62,7 +65,8 @@ result<-PCAtest(ex0, 100, 100, 0.05, varcorr=FALSE, counter=FALSE, plot=TRUE)
 
 ``` r
 #PCA analysis of five correlated (r=0.25) variables
-data("ex025")
+Sigma <- matrix(c(rep(c(1,0.25,0.25,0.25,0.25,0.25),4),1),5)
+ex025 <- mvrnorm(100, mu = mu, Sigma = Sigma )
 result<-PCAtest(ex025, 100, 100, 0.05, varcorr=FALSE, counter=FALSE, plot=TRUE)
 #> 
 #> Sampling bootstrap replicates... Please wait
@@ -78,25 +82,26 @@ result<-PCAtest(ex025, 100, 100, 0.05, varcorr=FALSE, counter=FALSE, plot=TRUE)
 #> 100 bootstrap replicates, 100 random permutations
 #> ========================================================
 #> 
-#> Empirical Psi = 1.1327, Max null Psi = 0.5166, Min null Psi = 0.0680, p-value = 0
-#> Empirical Phi = 0.2380, Max null Phi = 0.1607, Min null Phi = 0.0583, p-value = 0
+#> Empirical Psi = 2.3413, Max null Psi = 0.4924, Min null Psi = 0.0589, p-value = 0
+#> Empirical Phi = 0.3421, Max null Phi = 0.1569, Min null Phi = 0.0543, p-value = 0
 #> 
-#> Empirical eigenvalue #1 = 1.88693, Max null eigenvalue = 1.57397, p-value = 0
-#> Empirical eigenvalue #2 = 1.01454, Max null eigenvalue = 1.22064, p-value = 0.99
-#> Empirical eigenvalue #3 = 0.8287, Max null eigenvalue = 1.13383, p-value = 1
-#> Empirical eigenvalue #4 = 0.79299, Max null eigenvalue = 0.98174, p-value = 0.94
-#> Empirical eigenvalue #5 = 0.47684, Max null eigenvalue = 0.85547, p-value = 1
+#> Empirical eigenvalue #1 = 2.36135, Max null eigenvalue = 1.57297, p-value = 0
+#> Empirical eigenvalue #2 = 0.75291, Max null eigenvalue = 1.23965, p-value = 1
+#> Empirical eigenvalue #3 = 0.71891, Max null eigenvalue = 1.10155, p-value = 1
+#> Empirical eigenvalue #4 = 0.60379, Max null eigenvalue = 0.98527, p-value = 1
+#> Empirical eigenvalue #5 = 0.56303, Max null eigenvalue = 0.85324, p-value = 0.99
 #> 
-#> PC 1 is significant and accounts for 37.7% (95%-CI:33.1-44.1) of the total variation
+#> PC 1 is significant and accounts for 47.2% (95%-CI:39.6-56) of the total variation
 #> 
-#> Variables 2, and 3 have significant loadings on PC 1
+#> Variables 1, 2, 3, 4, and 5 have significant loadings on PC 1
 ```
 
 <img src="man/figures/README-example2-1.png" width="100%" />
 
 ``` r
 #PCA analysis of five correlated (r=0.5) variables
-data("ex05")
+Sigma <- matrix(c(rep(c(1,0.5,0.5,0.5,0.5,0.5),4),1),5)
+ex05 <- mvrnorm(100, mu = mu, Sigma = Sigma )
 result<-PCAtest(ex05, 100, 100, 0.05, varcorr=FALSE, counter=FALSE, plot=TRUE)
 #> 
 #> Sampling bootstrap replicates... Please wait
@@ -112,16 +117,16 @@ result<-PCAtest(ex05, 100, 100, 0.05, varcorr=FALSE, counter=FALSE, plot=TRUE)
 #> 100 bootstrap replicates, 100 random permutations
 #> ========================================================
 #> 
-#> Empirical Psi = 5.4655, Max null Psi = 0.4920, Min null Psi = 0.0634, p-value = 0
-#> Empirical Phi = 0.5228, Max null Phi = 0.1568, Min null Phi = 0.0563, p-value = 0
+#> Empirical Psi = 4.5082, Max null Psi = 0.4986, Min null Psi = 0.0690, p-value = 0
+#> Empirical Phi = 0.4748, Max null Phi = 0.1579, Min null Phi = 0.0587, p-value = 0
 #> 
-#> Empirical eigenvalue #1 = 3.08098, Max null eigenvalue = 1.55877, p-value = 0
-#> Empirical eigenvalue #2 = 0.63526, Max null eigenvalue = 1.23933, p-value = 1
-#> Empirical eigenvalue #3 = 0.52603, Max null eigenvalue = 1.12528, p-value = 1
-#> Empirical eigenvalue #4 = 0.43234, Max null eigenvalue = 0.97784, p-value = 1
-#> Empirical eigenvalue #5 = 0.3254, Max null eigenvalue = 0.84725, p-value = 1
+#> Empirical eigenvalue #1 = 2.87877, Max null eigenvalue = 1.54201, p-value = 0
+#> Empirical eigenvalue #2 = 0.78154, Max null eigenvalue = 1.27045, p-value = 1
+#> Empirical eigenvalue #3 = 0.52172, Max null eigenvalue = 1.07366, p-value = 1
+#> Empirical eigenvalue #4 = 0.4498, Max null eigenvalue = 0.99073, p-value = 1
+#> Empirical eigenvalue #5 = 0.36817, Max null eigenvalue = 0.84305, p-value = 1
 #> 
-#> PC 1 is significant and accounts for 61.6% (95%-CI:54.3-68.3) of the total variation
+#> PC 1 is significant and accounts for 57.6% (95%-CI:51.8-63.3) of the total variation
 #> 
 #> Variables 1, 2, 3, 4, and 5 have significant loadings on PC 1
 ```
@@ -147,18 +152,18 @@ result<-PCAtest(ants, 100, 100, 0.05, varcorr=FALSE, counter=FALSE, plot=TRUE)
 #> 100 bootstrap replicates, 100 random permutations
 #> ========================================================
 #> 
-#> Empirical Psi = 10.9186, Max null Psi = 2.6890, Min null Psi = 0.4898, p-value = 0
-#> Empirical Phi = 0.5099, Max null Phi = 0.2530, Min null Phi = 0.1080, p-value = 0
+#> Empirical Psi = 10.9186, Max null Psi = 2.7272, Min null Psi = 0.5626, p-value = 0
+#> Empirical Phi = 0.5099, Max null Phi = 0.2548, Min null Phi = 0.1157, p-value = 0
 #> 
-#> Empirical eigenvalue #1 = 3.84712, Max null eigenvalue = 2.21709, p-value = 0
-#> Empirical eigenvalue #2 = 1.52017, Max null eigenvalue = 1.88288, p-value = 0.15
-#> Empirical eigenvalue #3 = 0.70634, Max null eigenvalue = 1.39173, p-value = 1
-#> Empirical eigenvalue #4 = 0.41356, Max null eigenvalue = 1.15168, p-value = 1
-#> Empirical eigenvalue #5 = 0.34001, Max null eigenvalue = 1.00704, p-value = 1
-#> Empirical eigenvalue #6 = 0.14515, Max null eigenvalue = 0.7973, p-value = 1
-#> Empirical eigenvalue #7 = 0.02765, Max null eigenvalue = 0.5966, p-value = 1
+#> Empirical eigenvalue #1 = 3.84712, Max null eigenvalue = 2.32691, p-value = 0
+#> Empirical eigenvalue #2 = 1.52017, Max null eigenvalue = 1.64493, p-value = 0.17
+#> Empirical eigenvalue #3 = 0.70634, Max null eigenvalue = 1.36716, p-value = 1
+#> Empirical eigenvalue #4 = 0.41356, Max null eigenvalue = 1.10597, p-value = 1
+#> Empirical eigenvalue #5 = 0.34001, Max null eigenvalue = 0.90719, p-value = 1
+#> Empirical eigenvalue #6 = 0.14515, Max null eigenvalue = 0.80389, p-value = 1
+#> Empirical eigenvalue #7 = 0.02765, Max null eigenvalue = 0.60203, p-value = 1
 #> 
-#> PC 1 is significant and accounts for 55% (95%-CI:43.8-64.4) of the total variation
+#> PC 1 is significant and accounts for 55% (95%-CI:40-66.9) of the total variation
 #> 
 #> Variables 1, 2, 3, 4, 5, and 7 have significant loadings on PC 1
 ```

@@ -45,19 +45,24 @@ devtools::install_github("arleyc/PCAtest")
 ```{r example1}
 library(PCAtest)
 # PCA analysis of five uncorrelated variables
-data("ex0")
+library(MASS)
+mu <- c(0,0,0,0,0)
+Sigma <- matrix(c(rep(c(1,0,0,0,0,0),4),1),5)
+ex0 <- mvrnorm(100, mu = mu, Sigma = Sigma )
 result<-PCAtest(ex0, 100, 100, 0.05, varcorr=FALSE, counter=FALSE, plot=TRUE)
 ```
 
 ```{r example2}
 #PCA analysis of five correlated (r=0.25) variables
-data("ex025")
+Sigma <- matrix(c(rep(c(1,0.25,0.25,0.25,0.25,0.25),4),1),5)
+ex025 <- mvrnorm(100, mu = mu, Sigma = Sigma )
 result<-PCAtest(ex025, 100, 100, 0.05, varcorr=FALSE, counter=FALSE, plot=TRUE)
 ```
 
 ```{r example3}
 #PCA analysis of five correlated (r=0.5) variables
-data("ex05")
+Sigma <- matrix(c(rep(c(1,0.5,0.5,0.5,0.5,0.5),4),1),5)
+ex05 <- mvrnorm(100, mu = mu, Sigma = Sigma )
 result<-PCAtest(ex05, 100, 100, 0.05, varcorr=FALSE, counter=FALSE, plot=TRUE)
 ```
 
