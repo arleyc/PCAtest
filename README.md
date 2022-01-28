@@ -55,8 +55,8 @@ result<-PCAtest(ex0, 100, 100, 0.05, varcorr=FALSE, counter=FALSE, plot=TRUE)
 #> 100 bootstrap replicates, 100 random permutations
 #> ========================================================
 #> 
-#> Empirical Psi = 0.3043, Max null Psi = 0.4098, Min null Psi = 0.0513, p-value = 0.09
-#> Empirical Phi = 0.1234, Max null Phi = 0.1431, Min null Phi = 0.0506, p-value = 0.09
+#> Empirical Psi = 0.0688, Max null Psi = 0.4391, Min null Psi = 0.0393, p-value = 0.96
+#> Empirical Phi = 0.0587, Max null Phi = 0.1482, Min null Phi = 0.0443, p-value = 0.96
 #> 
 #> PCA is not significant!
 ```
@@ -82,18 +82,18 @@ result<-PCAtest(ex025, 100, 100, 0.05, varcorr=FALSE, counter=FALSE, plot=TRUE)
 #> 100 bootstrap replicates, 100 random permutations
 #> ========================================================
 #> 
-#> Empirical Psi = 1.1747, Max null Psi = 0.4939, Min null Psi = 0.0575, p-value = 0
-#> Empirical Phi = 0.2424, Max null Phi = 0.1571, Min null Phi = 0.0536, p-value = 0
+#> Empirical Psi = 1.6125, Max null Psi = 0.5319, Min null Psi = 0.0540, p-value = 0
+#> Empirical Phi = 0.2839, Max null Phi = 0.1631, Min null Phi = 0.0520, p-value = 0
 #> 
-#> Empirical eigenvalue #1 = 1.93222, Max null eigenvalue = 1.49114, p-value = 0
-#> Empirical eigenvalue #2 = 1.005, Max null eigenvalue = 1.28542, p-value = 1
-#> Empirical eigenvalue #3 = 0.74778, Max null eigenvalue = 1.09896, p-value = 1
-#> Empirical eigenvalue #4 = 0.71836, Max null eigenvalue = 0.97523, p-value = 1
-#> Empirical eigenvalue #5 = 0.59664, Max null eigenvalue = 0.85027, p-value = 0.99
+#> Empirical eigenvalue #1 = 2.10089, Max null eigenvalue = 1.50657, p-value = 0
+#> Empirical eigenvalue #2 = 0.92377, Max null eigenvalue = 1.30606, p-value = 1
+#> Empirical eigenvalue #3 = 0.77332, Max null eigenvalue = 1.0849, p-value = 1
+#> Empirical eigenvalue #4 = 0.71281, Max null eigenvalue = 0.97661, p-value = 1
+#> Empirical eigenvalue #5 = 0.48921, Max null eigenvalue = 0.87261, p-value = 1
 #> 
-#> PC 1 is significant and accounts for 38.6% (95%-CI:33-45.1) of the total variation
+#> PC 1 is significant and accounts for 42% (95%-CI:36.4-50.3) of the total variation
 #> 
-#> Variables 3, and 5 have significant loadings on PC 1
+#> Variables 1, 2, 4, and 5 have significant loadings on PC 1
 ```
 
 <img src="man/figures/README-example2-1.png" width="100%" />
@@ -117,16 +117,16 @@ result<-PCAtest(ex05, 100, 100, 0.05, varcorr=FALSE, counter=FALSE, plot=TRUE)
 #> 100 bootstrap replicates, 100 random permutations
 #> ========================================================
 #> 
-#> Empirical Psi = 4.9715, Max null Psi = 0.6110, Min null Psi = 0.0347, p-value = 0
-#> Empirical Phi = 0.4986, Max null Phi = 0.1748, Min null Phi = 0.0416, p-value = 0
+#> Empirical Psi = 6.5224, Max null Psi = 0.6385, Min null Psi = 0.0652, p-value = 0
+#> Empirical Phi = 0.5711, Max null Phi = 0.1787, Min null Phi = 0.0571, p-value = 0
 #> 
-#> Empirical eigenvalue #1 = 2.98947, Max null eigenvalue = 1.51295, p-value = 0
-#> Empirical eigenvalue #2 = 0.61887, Max null eigenvalue = 1.29267, p-value = 1
-#> Empirical eigenvalue #3 = 0.52468, Max null eigenvalue = 1.11037, p-value = 1
-#> Empirical eigenvalue #4 = 0.44867, Max null eigenvalue = 0.99485, p-value = 1
-#> Empirical eigenvalue #5 = 0.41831, Max null eigenvalue = 0.8607, p-value = 1
+#> Empirical eigenvalue #1 = 3.27708, Max null eigenvalue = 1.59532, p-value = 0
+#> Empirical eigenvalue #2 = 0.54778, Max null eigenvalue = 1.32431, p-value = 1
+#> Empirical eigenvalue #3 = 0.50354, Max null eigenvalue = 1.08899, p-value = 1
+#> Empirical eigenvalue #4 = 0.38057, Max null eigenvalue = 0.97618, p-value = 1
+#> Empirical eigenvalue #5 = 0.29104, Max null eigenvalue = 0.86362, p-value = 1
 #> 
-#> PC 1 is significant and accounts for 59.8% (95%-CI:49.8-68.5) of the total variation
+#> PC 1 is significant and accounts for 65.5% (95%-CI:58.6-72.6) of the total variation
 #> 
 #> Variables 1, 2, 3, 4, and 5 have significant loadings on PC 1
 ```
@@ -152,18 +152,18 @@ result<-PCAtest(ants, 100, 100, 0.05, varcorr=FALSE, counter=FALSE, plot=TRUE)
 #> 100 bootstrap replicates, 100 random permutations
 #> ========================================================
 #> 
-#> Empirical Psi = 10.9186, Max null Psi = 2.6304, Min null Psi = 0.5929, p-value = 0
-#> Empirical Phi = 0.5099, Max null Phi = 0.2503, Min null Phi = 0.1188, p-value = 0
+#> Empirical Psi = 10.9186, Max null Psi = 2.4464, Min null Psi = 0.6633, p-value = 0
+#> Empirical Phi = 0.5099, Max null Phi = 0.2413, Min null Phi = 0.1257, p-value = 0
 #> 
-#> Empirical eigenvalue #1 = 3.84712, Max null eigenvalue = 2.17305, p-value = 0
-#> Empirical eigenvalue #2 = 1.52017, Max null eigenvalue = 1.68576, p-value = 0.21
-#> Empirical eigenvalue #3 = 0.70634, Max null eigenvalue = 1.42096, p-value = 1
-#> Empirical eigenvalue #4 = 0.41356, Max null eigenvalue = 1.08653, p-value = 1
-#> Empirical eigenvalue #5 = 0.34001, Max null eigenvalue = 0.93275, p-value = 1
-#> Empirical eigenvalue #6 = 0.14515, Max null eigenvalue = 0.7769, p-value = 1
-#> Empirical eigenvalue #7 = 0.02765, Max null eigenvalue = 0.60424, p-value = 1
+#> Empirical eigenvalue #1 = 3.84712, Max null eigenvalue = 2.21571, p-value = 0
+#> Empirical eigenvalue #2 = 1.52017, Max null eigenvalue = 1.70742, p-value = 0.13
+#> Empirical eigenvalue #3 = 0.70634, Max null eigenvalue = 1.40805, p-value = 1
+#> Empirical eigenvalue #4 = 0.41356, Max null eigenvalue = 1.07902, p-value = 1
+#> Empirical eigenvalue #5 = 0.34001, Max null eigenvalue = 0.91932, p-value = 1
+#> Empirical eigenvalue #6 = 0.14515, Max null eigenvalue = 0.7377, p-value = 1
+#> Empirical eigenvalue #7 = 0.02765, Max null eigenvalue = 0.58508, p-value = 1
 #> 
-#> PC 1 is significant and accounts for 55% (95%-CI:43.4-65.6) of the total variation
+#> PC 1 is significant and accounts for 55% (95%-CI:45.7-65.7) of the total variation
 #> 
 #> Variables 1, 2, 3, 4, 5, and 7 have significant loadings on PC 1
 ```
@@ -190,4 +190,9 @@ and Software, 2, 103–123.
 Wong, M. K. L. and Carmona, C. P. (2021) Including intraspecific trait
 variability to avoid distortion of functional diversity and ecological
 inference: Lessons from natural assemblages. Methods in Ecology and
-Evolution. .
+Evolution, 12, 946-957.  
+
+## Citation
+
+Camargo, A. (2022) PCAtest: Testing the statistical significance of
+Principal Component Analysis in R. PeerJ, in press.
