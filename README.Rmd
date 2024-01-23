@@ -87,4 +87,4 @@ Wong, M. K. L. and Carmona, C. P. (2021) Including intraspecific trait variabili
 
 ## Citation
 
-Camargo, A. (2022) PCAtest: Testing the statistical significance of Principal Component Analysis in R. PeerJ, in press.
+Camargo, A. (2022) PCAtest: Testing the statistical significance of Principal Component Analysis in R. PeerJ 10: e12967. doi: 10.7717/peerj.12967
