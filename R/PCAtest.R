@@ -105,7 +105,7 @@ requireNamespace("utils", quietly = TRUE)
 
 # empirical eigenvalues, loadings, Psi, and Phi
 
-pcaemp <- stats::prcomp(x, scale=T, center=T)
+pcaemp <- stats::prcomp(na.omit(x), scale=T, center=T)
 eigenvalues <- pcaemp$sdev^2
 
 if (dim(x)[1] < dim(x)[2]) {
@@ -169,7 +169,7 @@ for (i in 1:nboot) {
 	}
 
 	bootdata <- x[sample(nrow(x),size=dim(x)[1],replace=TRUE),]
-	pcaboot <- stats::prcomp(bootdata, scale=T, center=T)
+	pcaboot <- stats::prcomp(na.omit(bootdata), scale=T, center=T)
 	eigenvalues <- pcaboot$sdev^2
 
 	if (dim(x)[1] < dim(x)[2]) {
@@ -249,7 +249,7 @@ for (i in 1:nperm) {
 
 	repvalue<-0
 	perm<-apply(x,MARGIN=2,FUN=sample)
-	pcaperm <- stats::prcomp(perm, scale=T, center=T)
+	pcaperm <- stats::prcomp(na.omit(perm), scale=T, center=T)
 	eigenvalues <- pcaperm$sdev^2  # eigenvalues
 
 	if (dim(x)[1] < dim(x)[2]) {
