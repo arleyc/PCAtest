@@ -47,19 +47,32 @@ An object of class “list” with the following elements:
 
 \item{pervarboot}{The percentage of variance explained by each PC based on the bootstrapped data.}
 
-\item{pervarperm}{The percentage of data explained by each PC based on the permuted data.}
+\item{pervarbootci}{Confidence intervals of the percentage of variance explained by each PC based on the bootstrapped data.}
+
+\item{pervarperm}{The percentage of variance explained by each PC based on the randomized data.}
+
+\item{pervarpermci}{Confidence intervals of the percentage of variance explained by each PC based on the randomized data.}
 
 \item{indexloadobs}{The index of the loadings of the observed data.}
 
 \item{indexloadboot}{The index of the loadings of the bootstrapped data.}
 
-\item{indexloadperm}{The index of the loadings of the permuted data.}
+\item{indexloadbootci}{Confidence intervals of the index of the loadings based on the bootstrapped data.}
+
+\item{indexloadperm}{The index of the loadings based on the randomized data.}
+
+\item{indexloadpermci}{Confidence intervals of the index of the loadings based on the randomized data.}
 
 \item{corobs}{If varcorr=TRUE, the correlations of the observed variables with each significant PC.}
 
 \item{corboot}{If varcorr=TRUE, the correlations of the observed variables with each significant PC based on the bootstrapped data.}
 
-\item{corperm}{If varcorr=TRUE, the correlations of the observed variables with each significant PC based on permuted data.}
+\item{corbootci}{If varcorr=TRUE, the confidence intervals of the correlations of the variables with each significant PC based on the bootstrapped data.}
+
+\item{corperm}{If varcorr=TRUE, the correlations of the observed variables with each significant PC based on randomized data.}
+
+\item{corpermci}{If varcorr=TRUE, the confidence intervals of the correlations of the variables with each significant PC based on randomized data.}
+
 }
 }
 \description{

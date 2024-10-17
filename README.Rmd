@@ -33,7 +33,7 @@ sampling variance around mean observed statistics based on bootstrap replicates.
 
 ## Installation
 
-You can install the released and the development versions from [GitHub]
+You can install the released (version 0.02) and the development versions from [GitHub]
 (https://github.com/) with:
 
 ``` r
