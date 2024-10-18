@@ -1,1 +1,4 @@
 url: https://arleyc.github.io/PCAtest/
+template:
+  bootstrap: 5
+
