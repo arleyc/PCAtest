@@ -1,24 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://arleyc.github.io/PCAtest//index.html</loc>
+    <loc>https://arleyc.github.io/PCAtest/404.html</loc>
   </url>
   <url>
-    <loc>https://arleyc.github.io/PCAtest//reference/PCAtest.html</loc>
+    <loc>https://arleyc.github.io/PCAtest/LICENSE-text.html</loc>
   </url>
   <url>
-    <loc>https://arleyc.github.io/PCAtest//reference/ants.html</loc>
+    <loc>https://arleyc.github.io/PCAtest/LICENSE.html</loc>
   </url>
   <url>
-    <loc>https://arleyc.github.io/PCAtest//reference/ex0.html</loc>
+    <loc>https://arleyc.github.io/PCAtest/articles/index.html</loc>
   </url>
   <url>
-    <loc>https://arleyc.github.io/PCAtest//reference/ex025.html</loc>
+    <loc>https://arleyc.github.io/PCAtest/articles/my-vignette.html</loc>
   </url>
   <url>
-    <loc>https://arleyc.github.io/PCAtest//reference/ex05.html</loc>
+    <loc>https://arleyc.github.io/PCAtest/authors.html</loc>
   </url>
   <url>
-    <loc>https://arleyc.github.io/PCAtest//articles/my-vignette.html</loc>
+    <loc>https://arleyc.github.io/PCAtest/index.html</loc>
+  </url>
+  <url>
+    <loc>https://arleyc.github.io/PCAtest/reference/PCAtest.html</loc>
+  </url>
+  <url>
+    <loc>https://arleyc.github.io/PCAtest/reference/ants.html</loc>
+  </url>
+  <url>
+    <loc>https://arleyc.github.io/PCAtest/reference/ex0.html</loc>
+  </url>
+  <url>
+    <loc>https://arleyc.github.io/PCAtest/reference/ex025.html</loc>
+  </url>
+  <url>
+    <loc>https://arleyc.github.io/PCAtest/reference/ex05.html</loc>
+  </url>
+  <url>
+    <loc>https://arleyc.github.io/PCAtest/reference/index.html</loc>
   </url>
 </urlset>

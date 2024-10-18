@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PCAtest: Statistical significance of PCA • PCAtest</title>
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
+<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
 <script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
@@ -19,6 +19,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -31,23 +33,17 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">PCAtest</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.2</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -69,7 +65,7 @@
 
       
 
-      </header><script src="my-vignette_files/header-attrs-2.10/header-attrs.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>PCAtest: Statistical significance of PCA</h1>
@@ -82,148 +78,178 @@
 
     
     
-<div id="introduction" class="section level2">
-<h2 class="hasAnchor">
-<a href="#introduction" class="anchor"></a>Introduction</h2>
-<p>A PCA is meaningful and should only be applied if there is a significant correlation structure among at least some of the variables in a dataset. Due to sampling variance alone, it is possible that some level of random correlation structure could occur in the data. Therefore, it is necessary to evaluate if the observed correlation structure is higher than expected due to chance alone.</p>
-<p>PCAtest uses a pair of statistics, Psi and Phi, based on the eigenvalues (roots) of a PCA to evaluate its significance by comparing observed values with their null distributions. The expected values of Psi and Phi are calculated from random permutations of the observations within variables, which effectively removes any correlation structure among variables. If the observed statistics are not larger than the expected null distributions, PCA is meaningless and it should not be used.</p>
-<p>If the null hypothesis of a non-significant PCA is rejected, then PCAtest calculates the observed eigenvalues and builds null distributions to select the number of significant PCs. In addition, PCAtest also calculates two other statistics: the index of the loadings and the correlations of each PC with the variables, to test the contribution of the observed variables to each significant PC.</p>
+<div class="section level2">
+<h2 id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
+</h2>
+<p>A PCA is meaningful and should only be applied if there is a
+significant correlation structure among at least some of the variables
+in a dataset. Due to sampling variance alone, it is possible that some
+level of random correlation structure could occur in the data.
+Therefore, it is necessary to evaluate if the observed correlation
+structure is higher than expected due to chance alone.</p>
+<p>PCAtest uses a pair of statistics, Psi and Phi, based on the
+eigenvalues (roots) of a PCA to evaluate its significance by comparing
+observed values with their null distributions. The expected values of
+Psi and Phi are calculated from random permutations of the observations
+within variables, which effectively removes any correlation structure
+among variables. If the observed statistics are not larger than the
+expected null distributions, PCA is meaningless and it should not be
+used.</p>
+<p>If the null hypothesis of a non-significant PCA is rejected, then
+PCAtest calculates the observed eigenvalues and builds null
+distributions to select the number of significant PCs. In addition,
+PCAtest also calculates two other statistics: the index of the loadings
+and the correlations of each PC with the variables, to test the
+contribution of the observed variables to each significant PC.</p>
 </div>
-<div id="overall-significance-of-a-pca" class="section level2">
-<h2 class="hasAnchor">
-<a href="#overall-significance-of-a-pca" class="anchor"></a>Overall significance of a PCA</h2>
-<p>PCAtest should not reject the null hypothesis of a non-significant PCA, if there is no correlation structure among the variables. We can generate and analyze in PCAtest a set of uncorrelated variables:</p>
+<div class="section level2">
+<h2 id="overall-significance-of-a-pca">Overall significance of a PCA<a class="anchor" aria-label="anchor" href="#overall-significance-of-a-pca"></a>
+</h2>
+<p>PCAtest should not reject the null hypothesis of a non-significant
+PCA, if there is no correlation structure among the variables. We can
+generate and analyze in PCAtest a set of uncorrelated variables:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">PCAtest</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"ex0"</span><span class="op">)</span>
-<span class="va">result</span><span class="op">&lt;-</span><span class="fu"><a href="../reference/PCAtest.html">PCAtest</a></span><span class="op">(</span><span class="va">ex0</span>, <span class="fl">100</span>, <span class="fl">100</span>, <span class="fl">0.05</span>, indload<span class="op">=</span><span class="cn">FALSE</span>, varcorr<span class="op">=</span><span class="cn">FALSE</span>, counter<span class="op">=</span><span class="cn">FALSE</span>, plot<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Sampling bootstrap replicates... Please wait</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Calculating confidence intervals of empirical statistics... Please wait</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Sampling random permutations... Please wait</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Comparing empirical statistics with their null distributions... Please wait</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; ========================================================</span>
-<span class="co">#&gt; Test of PCA significance: 5 variables, 100 observations</span>
-<span class="co">#&gt; 100 bootstrap replicates, 100 random permutations</span>
-<span class="co">#&gt; ========================================================</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Empirical Psi = 0.1691, Max null Psi = 0.4499, Min null Psi = 0.0358, p-value = 0.51</span>
-<span class="co">#&gt; Empirical Phi = 0.0920, Max null Phi = 0.1500, Min null Phi = 0.0423, p-value = 0.51</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; PCA is not significant!</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">PCAtest</span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://www.stats.ox.ac.uk/pub/MASS4/" class="external-link">MASS</a></span><span class="op">)</span></span>
+<span><span class="va">mu</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">5</span><span class="op">)</span></span>
+<span><span class="va">Sigma</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">0</span>,<span class="fl">0</span>,<span class="fl">0</span>,<span class="fl">0</span>,<span class="fl">0</span><span class="op">)</span>,<span class="fl">4</span><span class="op">)</span>,<span class="fl">1</span><span class="op">)</span>,<span class="fl">5</span><span class="op">)</span></span>
+<span><span class="va">ex0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/MASS/man/mvrnorm.html" class="external-link">mvrnorm</a></span><span class="op">(</span><span class="fl">100</span>, mu <span class="op">=</span> <span class="va">mu</span>, Sigma <span class="op">=</span> <span class="va">Sigma</span> <span class="op">)</span></span>
+<span><span class="va">result</span><span class="op">&lt;-</span><span class="fu"><a href="../reference/PCAtest.html">PCAtest</a></span><span class="op">(</span><span class="va">ex0</span>, <span class="fl">100</span>, <span class="fl">100</span>, <span class="fl">0.05</span>, indload<span class="op">=</span><span class="cn">FALSE</span>, varcorr<span class="op">=</span><span class="cn">FALSE</span>, counter<span class="op">=</span><span class="cn">FALSE</span>, plot<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Sampling bootstrap replicates... Please wait</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Calculating confidence intervals of empirical statistics... Please wait</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Sampling random permutations... Please wait</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Comparing empirical statistics with their null distributions... Please wait</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; ========================================================</span></span>
+<span><span class="co">#&gt; Test of PCA significance: 5 variables, 100 observations</span></span>
+<span><span class="co">#&gt; 100 bootstrap replicates, 100 random permutations</span></span>
+<span><span class="co">#&gt; ========================================================</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Empirical Psi = 0.2505, Max null Psi = 0.4141, Min null Psi = 0.0363, p-value = 0.15</span></span>
+<span><span class="co">#&gt; Empirical Phi = 0.1119, Max null Phi = 0.1439, Min null Phi = 0.0426, p-value = 0.15</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; PCA is not significant!</span></span></code></pre></div>
 <p><img src="my-vignette_files/figure-html/unnamed-chunk-2-1.png" width="80%" height="80%"></p>
 </div>
-<div id="selecting-the-number-of-significant-pcs" class="section level2">
-<h2 class="hasAnchor">
-<a href="#selecting-the-number-of-significant-pcs" class="anchor"></a>Selecting the number of significant PCs</h2>
-<p>If a PCA is significant, PCAtest uses random permutations to test which PC axes are significant based on random permutation and calculation of the percentage of total variation explained by each PC axis. We can use the published dataset from Wong &amp; Carmona (2021, <a href="https://doi.org/10.1111/2041-210X.13568" class="uri">https://doi.org/10.1111/2041-210X.13568</a>) consisting of seven morphological variables measured in 29 ant species:</p>
+<div class="section level2">
+<h2 id="selecting-the-number-of-significant-pcs">Selecting the number of significant PCs<a class="anchor" aria-label="anchor" href="#selecting-the-number-of-significant-pcs"></a>
+</h2>
+<p>If a PCA is significant, PCAtest uses random permutations to test
+which PC axes are significant based on random permutation and
+calculation of the percentage of total variation explained by each PC
+axis. We can use the published dataset from Wong &amp; Carmona (2021, <a href="https://doi.org/10.1111/2041-210X.13568" class="external-link uri">https://doi.org/10.1111/2041-210X.13568</a>) consisting of
+seven morphological variables measured in 29 ant species:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"ants"</span><span class="op">)</span>
-<span class="va">result</span><span class="op">&lt;-</span><span class="fu"><a href="../reference/PCAtest.html">PCAtest</a></span><span class="op">(</span><span class="va">ants</span>, <span class="fl">100</span>, <span class="fl">100</span>, <span class="fl">0.05</span>, indload<span class="op">=</span><span class="cn">FALSE</span>, varcorr<span class="op">=</span><span class="cn">FALSE</span>, counter<span class="op">=</span><span class="cn">FALSE</span>, plot<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Sampling bootstrap replicates... Please wait</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Calculating confidence intervals of empirical statistics... Please wait</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Sampling random permutations... Please wait</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Comparing empirical statistics with their null distributions... Please wait</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; ========================================================</span>
-<span class="co">#&gt; Test of PCA significance: 7 variables, 29 observations</span>
-<span class="co">#&gt; 100 bootstrap replicates, 100 random permutations</span>
-<span class="co">#&gt; ========================================================</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Empirical Psi = 10.9186, Max null Psi = 2.6398, Min null Psi = 0.5263, p-value = 0</span>
-<span class="co">#&gt; Empirical Phi = 0.5099, Max null Phi = 0.2507, Min null Phi = 0.1119, p-value = 0</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Empirical eigenvalue #1 = 3.84712, Max null eigenvalue = 2.14257, p-value = 0</span>
-<span class="co">#&gt; Empirical eigenvalue #2 = 1.52017, Max null eigenvalue = 1.72577, p-value = 0.19</span>
-<span class="co">#&gt; Empirical eigenvalue #3 = 0.70634, Max null eigenvalue = 1.35632, p-value = 1</span>
-<span class="co">#&gt; Empirical eigenvalue #4 = 0.41356, Max null eigenvalue = 1.10843, p-value = 1</span>
-<span class="co">#&gt; Empirical eigenvalue #5 = 0.34001, Max null eigenvalue = 0.93889, p-value = 1</span>
-<span class="co">#&gt; Empirical eigenvalue #6 = 0.14515, Max null eigenvalue = 0.78825, p-value = 1</span>
-<span class="co">#&gt; Empirical eigenvalue #7 = 0.02765, Max null eigenvalue = 0.66224, p-value = 1</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; PC 1 is significant and accounts for 55% (95%-CI:43.5-64.4) of the total variation</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"ants"</span><span class="op">)</span></span>
+<span><span class="va">result</span><span class="op">&lt;-</span><span class="fu"><a href="../reference/PCAtest.html">PCAtest</a></span><span class="op">(</span><span class="va">ants</span>, <span class="fl">100</span>, <span class="fl">100</span>, <span class="fl">0.05</span>, indload<span class="op">=</span><span class="cn">FALSE</span>, varcorr<span class="op">=</span><span class="cn">FALSE</span>, counter<span class="op">=</span><span class="cn">FALSE</span>, plot<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Sampling bootstrap replicates... Please wait</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Calculating confidence intervals of empirical statistics... Please wait</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Sampling random permutations... Please wait</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Comparing empirical statistics with their null distributions... Please wait</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; ========================================================</span></span>
+<span><span class="co">#&gt; Test of PCA significance: 7 variables, 29 observations</span></span>
+<span><span class="co">#&gt; 100 bootstrap replicates, 100 random permutations</span></span>
+<span><span class="co">#&gt; ========================================================</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Empirical Psi = 10.9186, Max null Psi = 2.4335, Min null Psi = 0.7399, p-value = 0</span></span>
+<span><span class="co">#&gt; Empirical Phi = 0.5099, Max null Phi = 0.2407, Min null Phi = 0.1327, p-value = 0</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Empirical eigenvalue #1 = 3.84712, Max null eigenvalue = 2.20197, p-value = 0</span></span>
+<span><span class="co">#&gt; Empirical eigenvalue #2 = 1.52017, Max null eigenvalue = 1.66424, p-value = 0.18</span></span>
+<span><span class="co">#&gt; Empirical eigenvalue #3 = 0.70634, Max null eigenvalue = 1.38726, p-value = 1</span></span>
+<span><span class="co">#&gt; Empirical eigenvalue #4 = 0.41356, Max null eigenvalue = 1.16479, p-value = 1</span></span>
+<span><span class="co">#&gt; Empirical eigenvalue #5 = 0.34001, Max null eigenvalue = 0.92378, p-value = 1</span></span>
+<span><span class="co">#&gt; Empirical eigenvalue #6 = 0.14515, Max null eigenvalue = 0.76744, p-value = 1</span></span>
+<span><span class="co">#&gt; Empirical eigenvalue #7 = 0.02765, Max null eigenvalue = 0.53648, p-value = 1</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; PC 1 is significant and accounts for 55% (95%-CI:40-63.6) of the total variation</span></span></code></pre></div>
 <p><img src="my-vignette_files/figure-html/unnamed-chunk-3-1.png" width="80%" height="80%"></p>
 </div>
-<div id="testing-which-variables-have-significant-loadings" class="section level2">
-<h2 class="hasAnchor">
-<a href="#testing-which-variables-have-significant-loadings" class="anchor"></a>Testing which variables have significant loadings</h2>
-<p>In addition to selecting the number of significant PC axes, we are usually interested in finding out which variables have significant loadings on each significant PC axis. PCAtest runs random permutations and plots index loadings for all significant PCs:</p>
+<div class="section level2">
+<h2 id="testing-which-variables-have-significant-loadings">Testing which variables have significant loadings<a class="anchor" aria-label="anchor" href="#testing-which-variables-have-significant-loadings"></a>
+</h2>
+<p>In addition to selecting the number of significant PC axes, we are
+usually interested in finding out which variables have significant
+loadings on each significant PC axis. PCAtest runs random permutations
+and plots index loadings for all significant PCs:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"ants"</span><span class="op">)</span>
-<span class="va">result</span><span class="op">&lt;-</span><span class="fu"><a href="../reference/PCAtest.html">PCAtest</a></span><span class="op">(</span><span class="va">ants</span>, <span class="fl">100</span>, <span class="fl">100</span>, <span class="fl">0.05</span>, indload<span class="op">=</span><span class="cn">TRUE</span>, varcorr<span class="op">=</span><span class="cn">FALSE</span>, counter<span class="op">=</span><span class="cn">FALSE</span>, plot<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Sampling bootstrap replicates... Please wait</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Calculating confidence intervals of empirical statistics... Please wait</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Sampling random permutations... Please wait</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Comparing empirical statistics with their null distributions... Please wait</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; ========================================================</span>
-<span class="co">#&gt; Test of PCA significance: 7 variables, 29 observations</span>
-<span class="co">#&gt; 100 bootstrap replicates, 100 random permutations</span>
-<span class="co">#&gt; ========================================================</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Empirical Psi = 10.9186, Max null Psi = 2.8082, Min null Psi = 0.6499, p-value = 0</span>
-<span class="co">#&gt; Empirical Phi = 0.5099, Max null Phi = 0.2586, Min null Phi = 0.1244, p-value = 0</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Empirical eigenvalue #1 = 3.84712, Max null eigenvalue = 2.16597, p-value = 0</span>
-<span class="co">#&gt; Empirical eigenvalue #2 = 1.52017, Max null eigenvalue = 1.79872, p-value = 0.13</span>
-<span class="co">#&gt; Empirical eigenvalue #3 = 0.70634, Max null eigenvalue = 1.47698, p-value = 1</span>
-<span class="co">#&gt; Empirical eigenvalue #4 = 0.41356, Max null eigenvalue = 1.14022, p-value = 1</span>
-<span class="co">#&gt; Empirical eigenvalue #5 = 0.34001, Max null eigenvalue = 1.00708, p-value = 1</span>
-<span class="co">#&gt; Empirical eigenvalue #6 = 0.14515, Max null eigenvalue = 0.73158, p-value = 1</span>
-<span class="co">#&gt; Empirical eigenvalue #7 = 0.02765, Max null eigenvalue = 0.5666, p-value = 1</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; PC 1 is significant and accounts for 55% (95%-CI:46.1-64.2) of the total variation</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Variables 1, 2, 3, 4, 5, and 7 have significant loadings on PC 1</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"ants"</span><span class="op">)</span></span>
+<span><span class="va">result</span><span class="op">&lt;-</span><span class="fu"><a href="../reference/PCAtest.html">PCAtest</a></span><span class="op">(</span><span class="va">ants</span>, <span class="fl">100</span>, <span class="fl">100</span>, <span class="fl">0.05</span>, indload<span class="op">=</span><span class="cn">TRUE</span>, varcorr<span class="op">=</span><span class="cn">FALSE</span>, counter<span class="op">=</span><span class="cn">FALSE</span>, plot<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Sampling bootstrap replicates... Please wait</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Calculating confidence intervals of empirical statistics... Please wait</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Sampling random permutations... Please wait</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Comparing empirical statistics with their null distributions... Please wait</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; ========================================================</span></span>
+<span><span class="co">#&gt; Test of PCA significance: 7 variables, 29 observations</span></span>
+<span><span class="co">#&gt; 100 bootstrap replicates, 100 random permutations</span></span>
+<span><span class="co">#&gt; ========================================================</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Empirical Psi = 10.9186, Max null Psi = 2.4714, Min null Psi = 0.5735, p-value = 0</span></span>
+<span><span class="co">#&gt; Empirical Phi = 0.5099, Max null Phi = 0.2426, Min null Phi = 0.1169, p-value = 0</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Empirical eigenvalue #1 = 3.84712, Max null eigenvalue = 2.23241, p-value = 0</span></span>
+<span><span class="co">#&gt; Empirical eigenvalue #2 = 1.52017, Max null eigenvalue = 1.71318, p-value = 0.11</span></span>
+<span><span class="co">#&gt; Empirical eigenvalue #3 = 0.70634, Max null eigenvalue = 1.3766, p-value = 1</span></span>
+<span><span class="co">#&gt; Empirical eigenvalue #4 = 0.41356, Max null eigenvalue = 1.14496, p-value = 1</span></span>
+<span><span class="co">#&gt; Empirical eigenvalue #5 = 0.34001, Max null eigenvalue = 0.93756, p-value = 1</span></span>
+<span><span class="co">#&gt; Empirical eigenvalue #6 = 0.14515, Max null eigenvalue = 0.7892, p-value = 1</span></span>
+<span><span class="co">#&gt; Empirical eigenvalue #7 = 0.02765, Max null eigenvalue = 0.62112, p-value = 1</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; PC 1 is significant and accounts for 55% (95%-CI:39.3-65.1) of the total variation</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Variables 1, 2, 3, 4, 5, and 7 have significant loadings on PC 1</span></span></code></pre></div>
 <p><img src="my-vignette_files/figure-html/unnamed-chunk-4-1.png" width="80%" height="80%"></p>
 </div>
-<div id="testing-which-variables-have-significant-correlations" class="section level2">
-<h2 class="hasAnchor">
-<a href="#testing-which-variables-have-significant-correlations" class="anchor"></a>Testing which variables have significant correlations</h2>
-<p>Instead of index loadings, we can choose to use variable correlations to evaluate their contributions to each significant PC axis:</p>
+<div class="section level2">
+<h2 id="testing-which-variables-have-significant-correlations">Testing which variables have significant correlations<a class="anchor" aria-label="anchor" href="#testing-which-variables-have-significant-correlations"></a>
+</h2>
+<p>Instead of index loadings, we can choose to use variable correlations
+to evaluate their contributions to each significant PC axis:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"ants"</span><span class="op">)</span>
-<span class="va">result</span><span class="op">&lt;-</span><span class="fu"><a href="../reference/PCAtest.html">PCAtest</a></span><span class="op">(</span><span class="va">ants</span>, <span class="fl">100</span>, <span class="fl">100</span>, <span class="fl">0.05</span>, indload<span class="op">=</span><span class="cn">FALSE</span>, varcorr<span class="op">=</span><span class="cn">TRUE</span>, counter<span class="op">=</span><span class="cn">FALSE</span>, plot<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Sampling bootstrap replicates... Please wait</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Calculating confidence intervals of empirical statistics... Please wait</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Sampling random permutations... Please wait</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Comparing empirical statistics with their null distributions... Please wait</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; ========================================================</span>
-<span class="co">#&gt; Test of PCA significance: 7 variables, 29 observations</span>
-<span class="co">#&gt; 100 bootstrap replicates, 100 random permutations</span>
-<span class="co">#&gt; ========================================================</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Empirical Psi = 10.9186, Max null Psi = 2.8666, Min null Psi = 0.4841, p-value = 0</span>
-<span class="co">#&gt; Empirical Phi = 0.5099, Max null Phi = 0.2613, Min null Phi = 0.1074, p-value = 0</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Empirical eigenvalue #1 = 3.84712, Max null eigenvalue = 2.26748, p-value = 0</span>
-<span class="co">#&gt; Empirical eigenvalue #2 = 1.52017, Max null eigenvalue = 1.75182, p-value = 0.18</span>
-<span class="co">#&gt; Empirical eigenvalue #3 = 0.70634, Max null eigenvalue = 1.35095, p-value = 1</span>
-<span class="co">#&gt; Empirical eigenvalue #4 = 0.41356, Max null eigenvalue = 1.16354, p-value = 1</span>
-<span class="co">#&gt; Empirical eigenvalue #5 = 0.34001, Max null eigenvalue = 0.97197, p-value = 1</span>
-<span class="co">#&gt; Empirical eigenvalue #6 = 0.14515, Max null eigenvalue = 0.81667, p-value = 1</span>
-<span class="co">#&gt; Empirical eigenvalue #7 = 0.02765, Max null eigenvalue = 0.64208, p-value = 1</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; PC 1 is significant and accounts for 55% (95%-CI:44.4-63.3) of the total variation</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Variables 2, and 3 have significant correlations with PC 1</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"ants"</span><span class="op">)</span></span>
+<span><span class="va">result</span><span class="op">&lt;-</span><span class="fu"><a href="../reference/PCAtest.html">PCAtest</a></span><span class="op">(</span><span class="va">ants</span>, <span class="fl">100</span>, <span class="fl">100</span>, <span class="fl">0.05</span>, indload<span class="op">=</span><span class="cn">FALSE</span>, varcorr<span class="op">=</span><span class="cn">TRUE</span>, counter<span class="op">=</span><span class="cn">FALSE</span>, plot<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Sampling bootstrap replicates... Please wait</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Calculating confidence intervals of empirical statistics... Please wait</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Sampling random permutations... Please wait</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Comparing empirical statistics with their null distributions... Please wait</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; ========================================================</span></span>
+<span><span class="co">#&gt; Test of PCA significance: 7 variables, 29 observations</span></span>
+<span><span class="co">#&gt; 100 bootstrap replicates, 100 random permutations</span></span>
+<span><span class="co">#&gt; ========================================================</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Empirical Psi = 10.9186, Max null Psi = 2.7018, Min null Psi = 0.5938, p-value = 0</span></span>
+<span><span class="co">#&gt; Empirical Phi = 0.5099, Max null Phi = 0.2536, Min null Phi = 0.1189, p-value = 0</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Empirical eigenvalue #1 = 3.84712, Max null eigenvalue = 2.16286, p-value = 0</span></span>
+<span><span class="co">#&gt; Empirical eigenvalue #2 = 1.52017, Max null eigenvalue = 1.6875, p-value = 0.23</span></span>
+<span><span class="co">#&gt; Empirical eigenvalue #3 = 0.70634, Max null eigenvalue = 1.44721, p-value = 1</span></span>
+<span><span class="co">#&gt; Empirical eigenvalue #4 = 0.41356, Max null eigenvalue = 1.12624, p-value = 1</span></span>
+<span><span class="co">#&gt; Empirical eigenvalue #5 = 0.34001, Max null eigenvalue = 0.94865, p-value = 1</span></span>
+<span><span class="co">#&gt; Empirical eigenvalue #6 = 0.14515, Max null eigenvalue = 0.75295, p-value = 1</span></span>
+<span><span class="co">#&gt; Empirical eigenvalue #7 = 0.02765, Max null eigenvalue = 0.64223, p-value = 1</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; PC 1 is significant and accounts for 55% (95%-CI:44.7-66.3) of the total variation</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Variables 2, and 3 have significant correlations with PC 1</span></span></code></pre></div>
 </div>
   </div>
 
@@ -238,11 +264,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Arley Camargo.</p>
+  <p></p>
+<p>Developed by Arley Camargo.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.9.</p>
 </div>
 
       </footer>
@@ -250,6 +278,8 @@
 
   
 
+
+  
 
   </body>
 </html>

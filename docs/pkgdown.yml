@@ -1,10 +1,10 @@
-pandoc: 2.14.2
-pkgdown: 1.6.1
+pandoc: 2.19.2
+pkgdown: 2.0.9
 pkgdown_sha: ~
 articles:
   my-vignette: my-vignette.html
-last_built: 2021-09-25T16:08Z
+last_built: 2024-10-18T01:27Z
 urls:
-  reference: https://arleyc.github.io/PCAtest//reference
-  article: https://arleyc.github.io/PCAtest//articles
+  reference: https://arleyc.github.io/PCAtest/reference
+  article: https://arleyc.github.io/PCAtest/articles
 
